@@ -1,0 +1,108 @@
+body {    
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+    color: black;
+    font-size: 14pt;
+}
+
+p {
+    color: #444;
+}
+ 
+
+.navi {
+    height: 80px;
+    vertical-align: middle;
+}
+
+.navi ul {
+    padding-top: 20px;
+    list-style-type: none;
+}
+
+.navi li {
+    display: inline;
+}   
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.halfSized {
+    width: 50%;
+    height: 50%;
+}
+
+.sized40 {
+    width: 40%;
+    height: 40%;
+}
+
+.max100 {
+    max-width: 100%;
+}
+
+.width960 {
+    max-width: 960px;
+}
+
+.width680 {
+    max-width: 680px;
+}
+
+.alginedRight {
+    text-align: right;
+}
+
+.marginTop40 {
+    margin-top: 40px;
+}
+
+.marginCentered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.paddingRight10 {
+    padding-right: 10%;
+}
+
+.paddingLeft10 {
+    padding-left: 10%;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+<!-- Can be used to put one IMG (absoluteCentered) on top of another one. Parent-DIV has to be set to absoluteCenteredParent. -->
+.absoluteCentered {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+.absoluteCenteredParent {
+    position: relative;
+}
+
+.invisible {
+    visibility: hidden;
+}

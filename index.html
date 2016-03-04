@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda Builder</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/basic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+      
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<!-- The application JavaScript code -->
+    <script src="js/model/activityModel.js"></script>
+    <script src="js/model/dayModel.js"></script>
+    <script src="js/model/agendaModel.js"></script>
+    <script src="js/controller/appController.js"></script>
+    <script src="js/layout/dayContainerLayout.js"></script>
+
+  </head>
+  <body>
+      
+    <div id="main">
+      
+        <div id="activitiesContainer" class="container"></div>
+        
+        <div id="daysContainer">
+            <div class="dayContainer horizontalContainer container">
+                <div class="dayInformation">
+                    <p>Start time: <span class="startTime"></span></p>
+                    <p>End time: <span class="endTime"></span></p>
+                    <p>Total length: <span class="totalLength"></span> min</p>
+                </div>
+                <div class="dailyActivitiesContainer">
+                    <table class="dailyActivitiesTable">
+                        <tr class="activityRow presentationRow">
+                            <td class="timeCol">10:10</td>
+                            <td class="activityCol">Introduction</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="dayContainer horizontalContainer container">
+            .. blog post #1 ..
+            </div>
+            
+            <div class="dayContainer horizontalContainer container">
+            .. blog post #1 ..
+            </div>
+            
+            <div class="dayContainer horizontalContainer container">
+            .. blog post #1 ..
+            </div>
+            
+            <div id="addDayButtonContainer" class="horizontalContainer"></div>
+        </div>
+        
+    </div>
+      
+  </body>
+</html>

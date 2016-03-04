@@ -1,0 +1,54 @@
+#main {
+    margin: 50px;
+    display: flex; 
+}
+
+.container {
+    margin-right: 20px;
+    padding: 40px;
+    background-color: lightgray;
+    width: 400px;
+}
+
+#activitiesContainer {
+    background-color: azure;
+}
+
+#daysContainer {
+    
+}
+
+.dayContainer {
+    background-color: lightgray;
+}
+
+.dailyActivitiesTable {
+    margin-top: 20px;
+    width: 320px;
+    background-color: white;
+}
+
+.dailyActivitiesTable td {
+    padding: 10px;
+}
+
+.activityCol {
+    width: 240px;
+}
+
+.presentationRow {
+    background-color: deepskyblue;
+}
+
+.groupWorkRow {
+    background-color: darksalmon;
+}
+
+.discussionRow {
+    background-color: orangered;
+}
+
+.breakRow {
+    background-color: yellow;
+}
+
