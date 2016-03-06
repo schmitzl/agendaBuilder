@@ -1,4 +1,4 @@
-var activityCreationView = function () {
+var ActivityCreationView = function () {
             
 
 }
