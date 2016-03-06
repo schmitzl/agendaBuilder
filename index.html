@@ -34,39 +34,24 @@
       
     <div id="main">
       
-        <div id="activitiesContainer" class="container"></div>
+        <div id="activitiesContainer" class="container">
+            <div class="popoverContainer">
+                <h3>Popover Example</h3>
+                <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover" data-placement="center" >popover</a>
+            </div>
+
+            <script>
+            $(document).ready(function(){
+                $('[data-toggle="popover"]').popover();   
+            });
+            </script>
+ 
+        </div>
         
         <div id="daysContainer">
-            <div class="dayContainer horizontalContainer container">
-                <div class="dayInformation">
-                    <p>Start time: <span class="startTime"></span></p>
-                    <p>End time: <span class="endTime"></span></p>
-                    <p>Total length: <span class="totalLength"></span> min</p>
-                </div>
-                <div class="dailyActivitiesContainer">
-                    <table class="dailyActivitiesTable">
-                        <tr class="activityRow presentationRow">
-                            <td class="timeCol">10:10</td>
-                            <td class="activityCol">Introduction</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
             
-            <div class="dayContainer horizontalContainer container">
-            .. blog post #1 ..
-            </div>
-            
-            <div class="dayContainer horizontalContainer container">
-            .. blog post #1 ..
-            </div>
-            
-            <div class="dayContainer horizontalContainer container">
-            .. blog post #1 ..
-            </div>
-            
-            <div id="addDayButtonContainer" class="horizontalContainer"></div>
         </div>
+        <div id="addDayButtonContainer" class="horizontalContainer"></div>
         
     </div>
       
