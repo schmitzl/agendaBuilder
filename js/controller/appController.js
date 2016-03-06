@@ -11,7 +11,9 @@ $(function() {
     var agendaViewController = new AgendaViewController(agendaView);
     var activityCreationViewController = new ActivityCreationViewController(activityCreationView);
     
-
+    //test
+    var test = new Test();
+    test.testDayCreation(agendaView);
 
     // you can use this method to create some test data and test your implementation
     function createTestData(){
