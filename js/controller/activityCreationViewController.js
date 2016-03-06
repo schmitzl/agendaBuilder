@@ -1,0 +1,4 @@
+var ActivityCreationViewController = function (activityCreationView) {
+            
+
+}

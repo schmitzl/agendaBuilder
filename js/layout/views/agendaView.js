@@ -1,0 +1,4 @@
+var agendaView = function () {
+            
+
+}

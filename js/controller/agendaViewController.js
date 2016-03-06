@@ -1,0 +1,4 @@
+var AgendaViewController = function (agendaView) {
+            
+
+}

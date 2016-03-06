@@ -1,0 +1,4 @@
+var activityCreationView = function () {
+            
+
+}
