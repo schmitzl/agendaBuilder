@@ -21,7 +21,7 @@ var AgendaView = function () {
     }
     
     
-    this.createActivity = function(dayContainer, activityType, time, heading) {
+    this.createActivity = function(container, activityType, time, heading) {
         
         rowClass = "";
         
@@ -45,8 +45,7 @@ var AgendaView = function () {
         var activityCol = $("<td></td>").text(heading).addClass("activityCol");
         activityRow.append(timeCol, activityCol);
         
-        dayContainer.find(".dailyActivitiesTable").append(activityRow); 
+        container.append(activityRow); 
        
     }
-
 }

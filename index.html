@@ -31,29 +31,49 @@
 
   </head>
   <body>
-      
     <div id="main">
       
-        <div id="activitiesContainer" class="container">
-            <div class="popoverContainer">
-                <h3>Popover Example</h3>
-                <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover" data-placement="center" >popover</a>
-            </div>
-
-            <script>
-            $(document).ready(function(){
-                $('[data-toggle="popover"]').popover();   
-            });
-            </script>
- 
+        <div id="activitiesContainer" class="container" > 
+            <button id="createNewActivityButton" class="btn">Create new activitys</button> 
         </div>
         
         <div id="daysContainer">
             
         </div>
-        <div id="addDayButtonContainer" class="horizontalContainer"></div>
+        <div id="addDayButtonContainer" class="horizontalContainer">+ Add a day</div>
+        
+        
+        
+        <div id="activityCreationContainer">
+            <form role="form">
+                <div class="form-group">
+                    <label for="activityTitle">Title:</label>
+                    <input id="activityTitle" type="text" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <label for="activityLengthInMin">Length in minutes:</label>
+                    <input id="activityLengthInMin" type="text" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                    <label for="activityType">Type:</label>
+                    <select id="activityType" type="text" class="form-control">
+                        <option id="presentationOption">Presentation</option>
+                        <option id="groupWorkOption">Group Work</option>
+                        <option id="discussionOption">Discussion</option>
+                        <option id="breakOption">Break</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="activityDescription">Description:</label>
+                    <textarea id="activityDescription" rows="5" class="form-control"></textarea>
+                </div>
+            </form>
+        </div>
+       
         
     </div>
+      
+      <div id="fullSize"></div>
       
   </body>
 </html>
