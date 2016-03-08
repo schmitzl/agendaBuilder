@@ -1,4 +1,4 @@
-var ActivityCreationViewController = function (activityCreationView) {
+var ActivityCreationViewController = function (activityCreationView, agendaModel) {
     
     showCreationContainer = function(){
         $('#activityCreationContainer').show();
@@ -18,5 +18,10 @@ var ActivityCreationViewController = function (activityCreationView) {
     
     $('#fullSize').on('click', function(){
         hideCreationContainer();
+    });
+	
+	// Adding new activity to model
+	$('#submitNewActivityButton').on('click', function(){
+        agendaModel.addActivity("TODO");
     });
 }

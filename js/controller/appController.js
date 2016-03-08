@@ -9,7 +9,7 @@ $(function() {
     
     // create controllers
     var agendaViewController = new AgendaViewController(agendaView);
-    var activityCreationViewController = new ActivityCreationViewController(activityCreationView);
+    var activityCreationViewController = new ActivityCreationViewController(activityCreationView, agendaModel);
     
     //test
     var test = new Test();
