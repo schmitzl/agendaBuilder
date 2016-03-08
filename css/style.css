@@ -57,12 +57,12 @@
 #activityCreationContainer {
     display: inline-block;
     position: fixed;
-    top: -150px;
+    top: -100px;
     bottom: 0;
     left: 0;
     right: 0;
     width: 500px;
-    height: 500px;
+    height: 550px;
     padding: 50px;
     margin: auto;
     background-color: whitesmoke;
