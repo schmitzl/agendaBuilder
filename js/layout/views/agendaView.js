@@ -55,6 +55,7 @@ var AgendaView = function (agendaModel) {
     this.update = function() {
         var days = this.agendaModel.getDays();
         for( var i=0; i<days.length; i++){
+            $('#daysContainer').html("");
             this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength() );
             console.log(days[i]);
         } 
