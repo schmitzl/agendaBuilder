@@ -78,17 +78,16 @@ function AgendaModel(){
 	};
 
 	
-	//*** OBSERVABLE PATTERN ***
-	var listeners = [];
+	//*** OBSERVER PATTERN ***
+	var observers = [];
 	
 	this.notifyObservers = function (args) {
-	    for (var i = 0; i < listeners.length; i++){
-	        listeners[i].update(args);
+	    for (var i = 0; i < observers.length; i++){
+	        observers[i].update(args);
 	    }
 	};
 	
 	this.addObserver = function (listener) {
-	    listeners.push(listener);
+	    observers.push(observers);
 	};
-	//*** END OBSERVABLE PATTERN ***
 }
