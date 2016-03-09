@@ -24,7 +24,7 @@ var AgendaView = function (agendaModel) {
     }
     
     
-    this.createActivity = function(container, activityType, time, heading) {
+    this.createActivityView = function(container, activityType, time, heading) {
         
         rowClass = "";
         
@@ -56,8 +56,12 @@ var AgendaView = function (agendaModel) {
         var days = this.agendaModel.getDays();
         for( var i=0; i<days.length; i++){
             $('#daysContainer').html("");
-            this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength() );
+            var dayContainer = this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength() );
             console.log(days[i]);
+            var activities = days[i].getActivities();
+            for( var j=0; j < activities.length; j++){
+                this.createActivityView(dayContainer.find(".dailyActivitiesTable"),activities[j].getType(), activities[j].getLength(), activities[j].getName());
+            }
         } 
 
     }
