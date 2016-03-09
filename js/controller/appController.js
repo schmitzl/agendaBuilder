@@ -14,9 +14,9 @@ $(function() {
     //test
     /* var test = new Test();
     test.testDayCreation(agendaView); */
+    createTestData();
     
     layoutContainer();
-    createTestData();
 
     // you can use this method to create some test data and test your implementation
     function createTestData(){

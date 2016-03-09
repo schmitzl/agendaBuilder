@@ -15,17 +15,25 @@ function AgendaModel(){
 		this.days.push(day);
 		this.notifyObservers();
 		return day;
+
 	};
 	
 	// add an activity to model
 	this.addActivity = function (activity,day,position) {
 		if(day != null) {
-			this.days[day]._addActivity(activity,position);
+			if (position != null) {
+				this.days[day]._addActivity(activity,position);
+			}
+			else {
+				this.days[day]._addActivity(activity);
+			}
 		} else {
 			if (position != null) {
 				this.parkedActivities.splice(position,0,activity);
 			}
-			else this.parkedActivities.push(activity);
+			else {
+				this.parkedActivities.push(activity);
+			}
 		}
 		this.notifyObservers();
 	}
@@ -68,7 +76,7 @@ function AgendaModel(){
 	this.getDays = function() {
 		return this.days;
 	};
-		
+
 	
 	//*** OBSERVABLE PATTERN ***
 	var listeners = [];

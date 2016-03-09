@@ -1,6 +1,6 @@
-var AgendaView = function (agendaModel, ) {
+var AgendaView = function (agendaModel) {
 
-    var this.agendaModel = agendaModel;
+    this.agendaModel = agendaModel;
             
     
     this.createDayView = function(startTime, endTime, totalLength) {
@@ -54,7 +54,10 @@ var AgendaView = function (agendaModel, ) {
 
     this.update = function() {
         var days = this.agendaModel.getDays();
-        
+        for( var i=0; i<days.length; i++){
+            this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength() );
+            console.log(days[i]);
+        } 
 
     }
 
