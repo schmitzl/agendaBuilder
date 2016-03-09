@@ -25,13 +25,24 @@ function Day(startH,startM) {
 	// the end time of the day
 	this.getEnd = function() {
 		var end = this._start + this.getTotalLength();
-		return Math.floor(end/60) + ":" + end % 60;
+		if(end % 60 < 10){
+			return Math.floor(end/60) + ":0" + end % 60;
+		}
+		else{
+			return Math.floor(end/60) + ":" + end % 60;
+		}
 	};
 	
 	// returns the string representation Hours:Minutes of 
 	// the start time of the day
 	this.getStart = function() {
-		return Math.floor(this._start/60) + ":" + this._start % 60;
+		if(this._start % 60 < 10){
+			return Math.floor(this._start/60) + ":0" + this._start % 60;
+		}
+		else{
+			return Math.floor(this._start/60) + ":" + this._start % 60;
+		}
+
 	};
 	
 	// returns the length (in minutes) of activities of certain type
@@ -79,4 +90,17 @@ function Day(startH,startM) {
 		var activity = this._removeActivity(oldposition);
 		this._addActivity(activity, newposition);
 	};
+	this.getActivityStartTime = function (activityPosition){
+		var activityStartTime = this._start ; 
+		for(var i=0 ; i<activityPosition; i++){
+			activityStartTime += this._activities[i].getLength() ;
+		}
+
+		if(activityStartTime % 60 < 10){
+			return Math.floor(activityStartTime/60) + ":0" + activityStartTime % 60;
+		}
+		else{
+			return Math.floor(activityStartTime/60) + ":" + activityStartTime % 60;
+		}
+	}
 }

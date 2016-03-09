@@ -57,10 +57,9 @@ var AgendaView = function (agendaModel) {
         for( var i=0; i<days.length; i++){
             $('#daysContainer').html("");
             var dayContainer = this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength() );
-            console.log(days[i]);
             var activities = days[i].getActivities();
             for( var j=0; j < activities.length; j++){
-                this.createActivityView(dayContainer.find(".dailyActivitiesTable"),activities[j].getType(), activities[j].getLength(), activities[j].getName());
+                this.createActivityView(dayContainer.find(".dailyActivitiesTable"),activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName());
             }
         } 
 
