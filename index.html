@@ -33,7 +33,7 @@
   <body>
     <div id="main">
       
-        <div id="activitiesContainer" class="container" > 
+        <div id="activitiesContainer" class="container"> 
             <button id="createNewActivityButton" class="btn">Create new activity</button> 
         </div>
         
@@ -52,15 +52,15 @@
                 </div>
                 <div class="form-group">
                     <label for="activityLengthInMin">Length in minutes:</label>
-                    <input id="activityLengthInMin" type="text" class="form-control"></input>
+                    <input id="activityLengthInMin" type="text" class="form-control" default="0"></input>
                 </div>
                 <div class="form-group">
                     <label for="activityType">Type:</label>
                     <select id="activityType" type="text" class="form-control">
-                        <option id="presentationOption">Presentation</option>
-                        <option id="groupWorkOption">Group Work</option>
-                        <option id="discussionOption">Discussion</option>
-                        <option id="breakOption">Break</option>
+                        <option id="presentationOption" value=0>Presentation</option>
+                        <option id="groupWorkOption" value=1>Group Work</option>
+                        <option id="discussionOption" value=2>Discussion</option>
+                        <option id="breakOption" value=3>Break</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -69,7 +69,8 @@
                 </div>
             </form>
 			
-			<button id="submitNewActivityButton" class="btn">Add activity</button> 
+			<button id="submitNewActivityButton" class="btn">Save</button>
+            <button id="cancelNewActivityButton" class="btn">Cancel</button> 
         </div>
        
         
