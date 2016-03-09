@@ -6,10 +6,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
     }
     
     hideCreationContainer= function(){
-        $('#activityTitle').val("");
-        $('#activityLengthInMin').val("0");
-        $('#activityType').val(0);
-        $('#activityDescription').val("");
+        activityCreationView.resetValues();
         
         $('#activityCreationContainer').hide();
         $('#fullSize').hide();
