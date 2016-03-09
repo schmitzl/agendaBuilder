@@ -1,7 +1,7 @@
 // This is a day consturctor. You can use it to create days, 
 // but there is also a specific function in the Model that adds
 // days to the model, so you don't need call this yourself.
-function DayModel(startH,startM) {
+function Day(startH,startM) {
 	this._start = startH * 60 + startM;
 	this._activities = [];
 

@@ -1,5 +1,8 @@
-var AgendaView = function () {
+var AgendaView = function (agendaModel, ) {
+
+    var this.agendaModel = agendaModel;
             
+    
     this.createDayView = function(startTime, endTime, totalLength) {
         
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
@@ -48,4 +51,13 @@ var AgendaView = function () {
         container.append(activityRow); 
        
     }
+
+    this.update = function() {
+        var days = this.agendaModel.getDays();
+        
+
+    }
+
+    this.agendaModel.addObserver(this);
+
 }

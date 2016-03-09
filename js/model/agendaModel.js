@@ -64,6 +64,11 @@ function AgendaModel(){
 		}
 		this.notifyObservers();
 	};
+
+	this.getDays = function() {
+		return this.days;
+	};
+		
 	
 	//*** OBSERVABLE PATTERN ***
 	var listeners = [];
