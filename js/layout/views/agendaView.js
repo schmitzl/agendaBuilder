@@ -3,10 +3,18 @@ var AgendaView = function (agendaModel) {
     this.agendaModel = agendaModel;
     this.agendaModel.addObserver(this);
     
-    this.createDayView = function(startTime, endTime, totalLength) {
+    this.createDayView = function(startTime, endTime, totalLength, dayIndex) {
         
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
-        var startTimeContainer = $("<p></p>").text("Start time: " + startTime);
+
+        var startTimeContainer = $("<form></form>").attr("role","form");
+        var startTimeFormGroupDiv = $("<div></div>").addClass("form-group");
+        var startTimeLabel= $("<label></label>").attr("for","startTimeInput"+dayIndex).text("Start time:");
+        var startTimeInput= $("<input></input>").attr("id","startTimeInput"+dayIndex).attr("type","text").attr("value",startTime).addClass("form-control");
+        startTimeFormGroupDiv.append(startTimeLabel,startTimeInput);
+        startTimeContainer.append(startTimeFormGroupDiv);
+
+
         var endTimeContainer = $("<p></p>").text("End time: " + endTime);
         var totalLengthContainer = $("<p></p>").text("Total length: " + totalLength + " min");
         dayInformationContainer.append(startTimeContainer, endTimeContainer, totalLengthContainer);
@@ -54,11 +62,9 @@ var AgendaView = function (agendaModel) {
 
     this.update = function() {
         var days = this.agendaModel.getDays();
-        console.log(days);
         $('#daysContainer').html("");
         for( var i=0; i<days.length; i++){
-            console.log(days[i]);
-            var dayContainer = this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength() );
+            var dayContainer = this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
             var activities = days[i].getActivities();
             for( var j=0; j < activities.length; j++){
                 this.createActivityView(dayContainer.find(".dailyActivitiesTable"),activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName());
