@@ -1,5 +1,7 @@
 $(function() {
         
+    makeObjectsDraggable();
+    
     // create models
     var agendaModel = new AgendaModel();
 
