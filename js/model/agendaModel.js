@@ -78,7 +78,7 @@ function AgendaModel(){
 	};
 
 	
-	//*** OBSERVER PATTERN ***
+	//*** OBSERVER PATTERN *** 
 	var observers = [];
 	
 	this.notifyObservers = function (args) {
@@ -87,7 +87,7 @@ function AgendaModel(){
 	    }
 	};
 	
-	this.addObserver = function (listener) {
-	    observers.push(observers);
+	this.addObserver = function (observer) {
+	    observers.push(observer);
 	};
 }

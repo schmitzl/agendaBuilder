@@ -1,8 +1,7 @@
 var AgendaView = function (agendaModel) {
-
-    this.agendaModel.addObserver(this);
     
     this.agendaModel = agendaModel;
+    this.agendaModel.addObserver(this);
     
     this.createDayView = function(startTime, endTime, totalLength) {
         
