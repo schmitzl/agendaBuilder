@@ -1,15 +1,19 @@
 TODO
 
-	- Add new activities parked container instead of first day
-	- Add drag and drop for activities
-	- Make everything pretty
-	- Ability to rearrange activities with days
+	MANDATORY:
+	- Add new activities to sidebar instead of first day
+	- Add drag and drop for activities (between sidebar, days & within days)
 	- Implement time percentage box
-	- Keep parked activity container on left side of screen regardless of horizontal scroll
 	- Add input for day start time
-	- Display actual dates for each day
-	- Adjust height of activity blocks according to duration
-	- Check that the input makes sense (datatype & values)
-	- Disable submit buttons until all fields are valid
+	
+	PRORITIZED:
 	- Ability to remove days and activities
 	- Ability to edit activities
+	- Check that the input makes sense (datatype & values)
+	- Disable submit buttons until all fields are valid
+
+	SPECIAL FEATURES:
+	- Keep sidebar on left side of screen regardless of horizontal scroll
+	- Display actual dates for each day
+	- Adjust height of activity blocks according to duration
+	- Make everything pretty
