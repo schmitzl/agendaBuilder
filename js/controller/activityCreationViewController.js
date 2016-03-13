@@ -24,8 +24,15 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
 	
 	// Adding new activity to model
 	$('#submitNewActivityButton').on('click', function(){
-        agendaModel.addActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ),0);
-        hideCreationContainer();
+        if(val = $('#activityLengthInMin').val(), $.isNumeric(val) && Math.floor(val) == val){
+            var activityLenght = parseInt($('#activityLengthInMin').val());
+            if( activityLenght < 1440){
+                $('#lengthError').html("Too much!");
+            }
+        } else {
+            agendaModel.addActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ),0);
+            hideCreationContainer();
+        }
     });
     
 	$('#cancelNewActivityButton').on('click', function(){
