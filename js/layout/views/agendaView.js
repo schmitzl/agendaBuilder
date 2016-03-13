@@ -8,6 +8,9 @@ var AgendaView = function (agendaModel) {
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
 
         var startTimeContainer = $("<form></form>").attr("role","form");
+        startTimeContainer.on( "submit", function(){
+            return false;
+        } );
         var startTimeFormGroupDiv = $("<div></div>").addClass("form-group");
         var startTimeLabel= $("<label></label>").attr("for","startTimeInput"+dayIndex).text("Start time:");
         var startTimeInput= $("<input></input>").attr("id","startTimeInput"+dayIndex).attr("type","text").attr("value",startTime).addClass("form-control");
