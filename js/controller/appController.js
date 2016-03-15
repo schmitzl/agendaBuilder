@@ -1,6 +1,4 @@
 $(function() {
-        
-    makeObjectsDraggable();
     
     // create models
     var agendaModel = new AgendaModel();
@@ -14,9 +12,9 @@ $(function() {
     var activityCreationViewController = new ActivityCreationViewController(activityCreationView, agendaModel);
     
     //test
-    /* var test = new Test();
-    test.testDayCreation(agendaView); */
-    createTestData();
+    var test = new Test();
+    test.testDayCreation(agendaView); 
+   // createTestData();
 
     // you can use this method to create some test data and test your implementation
     function createTestData(){

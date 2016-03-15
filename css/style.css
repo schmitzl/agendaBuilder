@@ -3,6 +3,17 @@
     display: flex; 
 }
 
+.dailyActivitiesContainer {
+    min-height: 500px;
+    width: 100%;
+    background-color: aquamarine;
+    padding: 50px;
+}
+
+.activityContainer {
+    padding: 10px;
+}
+
 .container {
     margin-right: 20px;
     padding: 40px;
@@ -101,5 +112,7 @@ html,body{
     width: 850px;
     overflow: auto;
 }
+
+
 
  

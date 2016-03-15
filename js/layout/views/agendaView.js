@@ -1,7 +1,4 @@
-var AgendaView = function (agendaModel) {
-    
-    this.agendaModel = agendaModel;
-    this.agendaModel.addObserver(this);
+var AgendaView = function () {
     
     this.createDayView = function(startTime, endTime, totalLength, dayIndex) {
         
@@ -62,19 +59,30 @@ var AgendaView = function (agendaModel) {
         container.append(activityRow); 
        
     }
-
-    this.update = function() {
-        var days = this.agendaModel.getDays();
-        $('#daysContainer').html("");
-        for( var i=0; i<days.length; i++){
-            var dayContainer = this.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
-            var activities = days[i].getActivities();
-            for( var j=0; j < activities.length; j++){
-                this.createActivityView(dayContainer.find(".dailyActivitiesTable"),activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName());
-            }
-        } 
+    
+    this.createActivityContainer = function(container, activityType, time, heading) {
         
-        layoutContainer();
+        rowClass = "";
+        
+        switch(activityType) {
+            case "Presentation":
+                rowClass = "presentationRow";
+                break;
+            case "Group Work":
+                rowClass = "groupWorkRow";
+                break;
+            case "Discussion":
+                rowClass = "discussionRow";
+                break;
+            case "Break":
+                rowClass = "breakRow";
+                break;
+        }
+        
+        var activityContainer = $("<div></div>").addClass("activityContainer " + rowClass);  
+        activityContainer.html(heading);
+        container.append(activityContainer); 
+        return activityContainer;
     }
 
 }
