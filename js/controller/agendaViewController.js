@@ -23,7 +23,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
         for( var i=0; i<days.length; i++){
             var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
             var dailyActivitesContainer = dayContainer.find(".dailyActivitiesContainer");
-            dailyActivitesContainer.droppable({
+          /*  dailyActivitesContainer.droppable({
                 accept: ".activityContainer",
                 hoverClass: 'hovered',
                 drop: positioning
@@ -33,7 +33,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
                 alert('drop');
                 //originalEvent = event.originalEvent.dataTransfer;
                 //event.target.appendChild(document.getElementById(originalEvent));
-            });
+            });*/
             
             var activities = days[i].getActivities();
             for( var j=0; j < activities.length; j++){
