@@ -4,7 +4,7 @@
 }
 
 .dailyActivitiesContainer {
-    min-height: 500px;
+    min-height: 300px;
     width: 100%;
     background-color: aquamarine;
     padding: 50px;
@@ -21,14 +21,14 @@
     width: 400px;
 }
 
-#activitiesContainer {
-    background-color: azure;
-    margin-left: 0;
+#activitiesContainer{
+    position: fixed;
     width: 350px;
+    background-color: azure;
 }
 
 #daysContainer {
-    
+   
 }
 
 .dayContainer {
@@ -93,7 +93,7 @@ html,body{
     top: 0;
     height:100%;
     width:100%;
-    /*overflow:hidden; */ /* or overflow:auto; if you want scrollbars */
+    overflow:hidden; /* or overflow:auto; if you want scrollbars */
     background-color: black;
     opacity: 0.6;
     z-index: 1;
@@ -104,13 +104,12 @@ html,body{
     position: fixed;
     bottom: 0;
     right: 0;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     margin-right: 50px;
 }
 
-#scrollContainer{
-    width: 850px;
-    overflow: auto;
+#allDaysContainer{
+    margin-left: 400px;
 }
 
 
