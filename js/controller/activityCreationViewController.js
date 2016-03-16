@@ -24,15 +24,22 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
 	
 	// Adding new activity to model
 	$('#submitNewActivityButton').on('click', function(){
-       /* if(val = $('#activityLengthInMin').val(), $.isNumeric(val) && Math.floor(val) == val){
+       if(val = $('#activityLengthInMin').val(), $.isNumeric(val) && Math.floor(val) == val){
             var activityLenght = parseInt($('#activityLengthInMin').val());
-            if( activityLenght < 1440){
-                $('#lengthError').html("Too much!");
+            if( activityLenght > 1440){
+                $('#lengthError').html("Insert a smaller activity lenght!");
+            } 
+            else if(activityLenght <= 0){
+                $('#lengthError').html("Please insert a positive number!");
             }
-        }*/ 
-            agendaModel.addActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ),0);
-            hideCreationContainer();
-        
+            else {
+                agendaModel.addActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ),0);
+                hideCreationContainer();
+            }
+        } 
+        else{
+            $('#lengthError').html("Your input has to be a number!");
+        }
     });
     
 	$('#cancelNewActivityButton').on('click', function(){
