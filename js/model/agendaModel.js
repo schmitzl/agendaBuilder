@@ -50,6 +50,17 @@ function AgendaModel(){
 		return act;
 	};
 	
+    this.moveActivityById = function(id, dayIndex) {
+        
+            activities = this.days[dayIndex].getActivities();
+            for(var j = 0; j < activities.length; j++) {
+                if(activities[j].getId() == id)
+                    activities.splice(j, 1);
+            }
+
+    }
+    
+    
 	// moves activity between the days, or day and parked activities.
 	// to park activity you need to set the new day to null
 	// to move a parked activity to let's say day 0 you set oldday to null

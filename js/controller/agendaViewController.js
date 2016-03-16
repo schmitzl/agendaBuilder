@@ -1,5 +1,5 @@
 var AgendaViewController = function (agendaView, agendaModel) {
-    
+        
     agendaModel.addObserver(this);
 
 
@@ -21,21 +21,34 @@ var AgendaViewController = function (agendaView, agendaModel) {
 		}
 	}
     
+    
+    elementGotDragged = function(){
+        
+    }
+    
+    enableDragAndDrop = function(container) {
+        container.sortable({
+                    connectWith: '.dailyActivitiesContainer',
+                    stop: function(event, ui) { 
+                        agendaModel.moveActivityById(ui.item.attr('id'), 0);
+                    }
+            }); 
+    }
+     
+    
      this.update = function() {
-		updateStartTimeEvents();
+		//updateStartTimeEvents();
 	 
         var days = agendaModel.getDays();
         $('#daysContainer').html("");
         for( var i=0; i<days.length; i++){
             var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
             var dailyActivitesContainer = dayContainer.find(".dailyActivitiesContainer");
-            dailyActivitesContainer.sortable({
-                    connectWith: '.dailyActivitiesContainer'
-            }); 
+            enableDragAndDrop(dailyActivitesContainer);
             
             var activities = days[i].getActivities();
             for( var j=0; j < activities.length; j++){
-                activityContainer = agendaView.createActivityContainer(dayContainer.find(".dailyActivitiesContainer") ,activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName());
+                activityContainer = agendaView.createActivityContainer(dayContainer.find(".dailyActivitiesContainer"), activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName(), activities[j].getId());
             } 
         }
         layoutContainer();

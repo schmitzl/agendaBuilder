@@ -60,7 +60,7 @@ var AgendaView = function () {
        
     }
     
-    this.createActivityContainer = function(container, activityType, time, heading) {
+    this.createActivityContainer = function(container, activityType, time, heading, id) {
         
         rowClass = "";
         
@@ -80,6 +80,7 @@ var AgendaView = function () {
         }
         
         var activityContainer = $("<div></div>").addClass("activityContainer " + rowClass);  
+        activityContainer.attr('id', id);
         activityContainer.html(heading);
         container.append(activityContainer); 
         return activityContainer;

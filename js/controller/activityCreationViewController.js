@@ -1,5 +1,7 @@
 var ActivityCreationViewController = function (activityCreationView, agendaModel) {
     
+    var activityIdCounter = 0;
+    
     showCreationContainer = function(){
         $('#activityCreationContainer').show();
         $('#fullSize').show();
@@ -25,15 +27,16 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
 	// Adding new activity to model
 	$('#submitNewActivityButton').on('click', function(){
        if(val = $('#activityLengthInMin').val(), $.isNumeric(val) && Math.floor(val) == val){
-            var activityLenght = parseInt($('#activityLengthInMin').val());
-            if( activityLenght > 1440){
+            var activityLength = parseInt($('#activityLengthInMin').val());
+            if( activityLength > 1440){
                 $('#lengthError').html("Insert a smaller activity lenght!");
             } 
-            else if(activityLenght <= 0){
+            else if(activityLength <= 0){
                 $('#lengthError').html("Please insert a positive number!");
             }
             else {
-                agendaModel.addActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ),0);
+                agendaModel.addActivity(new Activity( $('#activityTitle').val(), parseInt($('#activityLengthInMin').val()), $('#activityType').val(), $('#activityDescription').val(), activityIdCounter), 0);
+                activityIdCounter++;
                 hideCreationContainer();
             }
         } 

@@ -1,8 +1,8 @@
 var Test = function() {
 
     this.testDayCreation = function(agendaView){
-        var dayContainer1 = agendaView.createDayView("8:00", "12:00", "120");
-        agendaView.createActivityContainer(dayContainer1.find(".dailyActivitiesContainer"), "Presentation", "60", "Introduction");}
+      /*  var dayContainer1 = agendaView.createDayView("8:00", "12:00", "120");
+        agendaView.createActivityContainer(dayContainer1.find(".dailyActivitiesContainer"), "Presentation", "60", "Introduction", 1);}
         
       /*  var dayContainer2 = agendaView.createDayView("8:00", "12:00", "120");
         agendaView.createActivity(dayContainer2.find(".dailyActivitiesTable"), "Break", "60", "break");
@@ -15,5 +15,5 @@ var Test = function() {
         
         var dayContainer5 = agendaView.createDayView("8:00", "12:00", "120");
         agendaView.createActivity(dayContainer5.find(".dailyActivitiesTable"), "Presentation", "60", "Introduction");
-    }*/
+    */}
 };
