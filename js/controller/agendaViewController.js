@@ -29,28 +29,13 @@ var AgendaViewController = function (agendaView, agendaModel) {
         for( var i=0; i<days.length; i++){
             var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
             var dailyActivitesContainer = dayContainer.find(".dailyActivitiesContainer");
-          /*  dailyActivitesContainer.droppable({
-                accept: ".activityContainer",
-                hoverClass: 'hovered',
-                drop: positioning
-            });
-            dailyActivitesContainer.bind('drop', function(event){
-                event.preventDefault();
-                alert('drop');
-                //originalEvent = event.originalEvent.dataTransfer;
-                //event.target.appendChild(document.getElementById(originalEvent));
-            });*/
+            dailyActivitesContainer.sortable({
+                    connectWith: '.dailyActivitiesContainer'
+            }); 
             
             var activities = days[i].getActivities();
             for( var j=0; j < activities.length; j++){
                 activityContainer = agendaView.createActivityContainer(dayContainer.find(".dailyActivitiesContainer") ,activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName());
-                activityContainer.draggable({
-  revert: "invalid",
-  opacity: 0.7,
-  snap: ".dailyActivitiesContainer",
-  snapMode: "inner"
-});
-        
             } 
         }
         layoutContainer();
