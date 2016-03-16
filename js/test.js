@@ -16,4 +16,5 @@ var Test = function() {
         var dayContainer5 = agendaView.createDayView("8:00", "12:00", "120");
         agendaView.createActivity(dayContainer5.find(".dailyActivitiesTable"), "Presentation", "60", "Introduction");
     }*/
+	}
 };
