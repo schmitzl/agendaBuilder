@@ -22,15 +22,14 @@ var AgendaViewController = function (agendaView, agendaModel) {
 	}
     
     
-    elementGotDragged = function(){
-        
-    }
-    
     enableDragAndDrop = function(container) {
         container.sortable({
                     connectWith: '.dailyActivitiesContainer',
-                    stop: function(event, ui) { 
-                        agendaModel.moveActivityById(ui.item.attr('id'), 0);
+                    update: function(event, ui) { 
+                        if(agendaModel.activityIsStored(ui.item.attr('id')))
+                            agendaModel.moveActivityById(ui.item.attr('id'), 0);
+                        /*else
+                            agendaModel.moveActivityById(ui.item.attr('id'), 0);*/
                     }
             }); 
     }

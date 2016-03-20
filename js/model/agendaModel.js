@@ -60,6 +60,18 @@ function AgendaModel(){
 
     }
     
+    this.activityIsStored = function(id) {
+        for(var i = 0; i < this.days.length; i++) {
+            activities = this.days[i].getActivities();
+            for(var j = 0; j < activities.length; j++) {
+                if(activities[j].getId() == id) 
+                    return true;
+            }
+        
+        }
+        
+        return false;
+    }
     
 	// moves activity between the days, or day and parked activities.
 	// to park activity you need to set the new day to null
