@@ -59,19 +59,19 @@
     width: 240px;
 }
 
-.presentationRow {
+.presentationContainer {
     background-color: deepskyblue;
 }
 
-.groupWorkRow {
+.groupWorkContainer {
     background-color: darksalmon;
 }
 
-.discussionRow {
+.discussionContainer {
     background-color: orangered;
 }
 
-.breakRow {
+.breakContainer {
     background-color: yellow;
 }
 

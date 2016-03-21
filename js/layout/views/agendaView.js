@@ -31,57 +31,31 @@ var AgendaView = function () {
         return dayContainer; 
     }
     
-    
-    this.createActivityView = function(container, activityType, time, heading) {
-        
-        rowClass = "";
-        
-        switch(activityType) {
-            case "Presentation":
-                rowClass = "presentationRow";
-                break;
-            case "Group Work":
-                rowClass = "groupWorkRow";
-                break;
-            case "Discussion":
-                rowClass = "discussionRow";
-                break;
-            case "Break":
-                rowClass = "breakRow";
-                break;
-        }
-        
-        var activityRow = $("<tr></tr>").addClass("activityRow " + rowClass);
-        var timeCol = $("<td></td>").text(time).addClass("timeCol");
-        var activityCol = $("<td></td>").text(heading).addClass("activityCol");
-        activityRow.append(timeCol, activityCol);
-        
-        container.append(activityRow); 
-       
-    }
-    
+
     this.createActivityContainer = function(container, activityType, time, heading, id) {
         
-        rowClass = "";
+        activityContainerClass = "";
         
         switch(activityType) {
             case "Presentation":
-                rowClass = "presentationRow";
+                activityContainerClass = "presentationContainer";
                 break;
             case "Group Work":
-                rowClass = "groupWorkRow";
+                activityContainerClass = "groupWorkContainer";
                 break;
             case "Discussion":
-                rowClass = "discussionRow";
+                activityContainerClass = "discussionContainer";
                 break;
             case "Break":
-                rowClass = "breakRow";
+                activityContainerClass = "breakContainer";
                 break;
         }
         
-        var activityContainer = $("<div></div>").addClass("activityContainer").addClass(rowClass);  
+        var timeElem = $("<span></span>").html(time + " ");
+        var headingElem = $("<span></span>").html(heading);
+        var activityContainer = $("<div></div>").addClass("activityContainer").addClass(activityContainerClass);  
         activityContainer.attr('id', id);
-        activityContainer.html(heading);
+        activityContainer.append(timeElem, headingElem);
         container.append(activityContainer); 
         return activityContainer;
     }
