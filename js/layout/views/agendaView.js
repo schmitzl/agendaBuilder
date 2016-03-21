@@ -79,7 +79,7 @@ var AgendaView = function () {
                 break;
         }
         
-        var activityContainer = $("<div></div>").addClass("activityContainer " + rowClass);  
+        var activityContainer = $("<div></div>").addClass("activityContainer").addClass(rowClass);  
         activityContainer.attr('id', id);
         activityContainer.html(heading);
         container.append(activityContainer); 

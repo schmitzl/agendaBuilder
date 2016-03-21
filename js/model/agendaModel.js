@@ -49,28 +49,18 @@ function AgendaModel(){
 		this.notifyObservers();
 		return act;
 	};
-	
-    this.moveActivityById = function(id, dayIndex) {
-        
-            activities = this.days[dayIndex].getActivities();
-            for(var j = 0; j < activities.length; j++) {
-                if(activities[j].getId() == id)
-                    activities.splice(j, 1);
-            }
-
-    }
     
-    this.activityIsStored = function(id) {
+    this.getActivityPosById = function(id) {
         for(var i = 0; i < this.days.length; i++) {
             activities = this.days[i].getActivities();
             for(var j = 0; j < activities.length; j++) {
                 if(activities[j].getId() == id) 
-                    return true;
+                    return j;
             }
         
         }
         
-        return false;
+        return null;
     }
     
 	// moves activity between the days, or day and parked activities.

@@ -26,10 +26,17 @@ var AgendaViewController = function (agendaView, agendaModel) {
         container.sortable({
                     connectWith: '.dailyActivitiesContainer',
                     update: function(event, ui) { 
-                        if(agendaModel.activityIsStored(ui.item.attr('id')))
-                            agendaModel.moveActivityById(ui.item.attr('id'), 0);
-                        /*else
-                            agendaModel.moveActivityById(ui.item.attr('id'), 0);*/
+                        if(ui.sender != null) {
+                            activity = ui.item;
+                            activityId = activity.attr('id');
+                            srcContainerPos = ui.sender.attr('id').slice(0, -1);
+                            activitySrcPos = agendaModel.getActivityPosById(activityId);
+                            destContainer = ui.item.closest('.dailyActivitiesContainer');
+                            destContainerPos = destContainer.attr('id').slice(0, -1);
+                            activityDestPos = destContainer.find('.activityContainer').index(activity);
+                            
+                            agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
+                        } 
                     }
             }); 
     }
@@ -43,6 +50,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
         for( var i=0; i<days.length; i++){
             var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
             var dailyActivitesContainer = dayContainer.find(".dailyActivitiesContainer");
+            dailyActivitesContainer.attr('id', i + 'a');
             enableDragAndDrop(dailyActivitesContainer);
             
             var activities = days[i].getActivities();
