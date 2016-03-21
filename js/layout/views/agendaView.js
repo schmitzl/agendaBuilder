@@ -31,6 +31,34 @@ var AgendaView = function () {
         return dayContainer; 
     }
     
+    this.createParkedActivityContainer = function(container, activityType, length, heading, id) {
+        
+        activityContainerClass = "";
+        
+        switch(activityType) {
+            case "Presentation":
+                activityContainerClass = "presentationContainer";
+                break;
+            case "Group Work":
+                activityContainerClass = "groupWorkContainer";
+                break;
+            case "Discussion":
+                activityContainerClass = "discussionContainer";
+                break;
+            case "Break":
+                activityContainerClass = "breakContainer";
+                break;
+        }
+        
+        var timeElem = $("<span></span>").html(length + " ");
+        var headingElem = $("<span></span>").html(heading);
+        var activityContainer = $("<div></div>").addClass("activityContainer").addClass(activityContainerClass);  
+        activityContainer.attr('id', id);
+        activityContainer.append(timeElem, headingElem);
+        container.append(activityContainer); 
+        return activityContainer;
+    }
+    
 
     this.createActivityContainer = function(container, activityType, time, heading, id) {
         

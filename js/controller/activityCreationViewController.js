@@ -35,7 +35,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
                 $('#lengthError').html("Please insert a positive number!");
             }
             else {
-                agendaModel.addActivity(new Activity( $('#activityTitle').val(), parseInt($('#activityLengthInMin').val()), $('#activityType').val(), $('#activityDescription').val(), activityIdCounter), 0);
+                agendaModel.addParkedActivity(new Activity( $('#activityTitle').val(), parseInt($('#activityLengthInMin').val()), $('#activityType').val(), $('#activityDescription').val(), activityIdCounter), null);
                 activityIdCounter++;
                 hideCreationContainer();
             }

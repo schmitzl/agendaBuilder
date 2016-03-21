@@ -1,6 +1,35 @@
 var AgendaViewController = function (agendaView, agendaModel) {
         
+    enableDragAndDrop = function(container) {
+        container.sortable({
+                    connectWith: '.dailyActivitiesContainer',
+                    update: function(event, ui) { 
+                        if(ui.sender != null) {
+                            activity = ui.item;
+                            activityId = activity.attr('id');
+                            srcContainerPos = ui.sender.attr('id').slice(0, -1);
+                            if(srcContainerPos == "parkedActivitiesContaine" )
+                                srcContainerPos = null;
+                            activitySrcPos = agendaModel.getActivityPosById(activityId);
+                            destContainer = ui.item.closest('.dailyActivitiesContainer');
+                            destContainerPos = destContainer.attr('id').slice(0, -1);
+                            if(destContainerPos.length == "parkedActivitiesContaine")
+                                destContainerPos = null;
+                            activityDestPos = destContainer.find('.activityContainer').index(activity);
+                            
+                            agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
+                        } 
+                    } 
+            }); 
+    }
+    
     agendaModel.addObserver(this);
+    
+    var parkedActivitiesContainer = $('#parkedActivitiesContainer');
+    var activitiesContainer = parkedActivitiesContainer.find(".dailyActivitiesContainer");
+    activitiesContainer.attr('id', '-1a');
+    parkedActivitiesContainer.html("");
+    enableDragAndDrop(parkedActivitiesContainer);
 
 
     $('#addDayButtonContainer').on('click', function(){
@@ -20,31 +49,18 @@ var AgendaViewController = function (agendaView, agendaModel) {
 				
 		}
 	}
-    
-    
-    enableDragAndDrop = function(container) {
-        container.sortable({
-                    connectWith: '.dailyActivitiesContainer',
-                    update: function(event, ui) { 
-                        if(ui.sender != null) {
-                            activity = ui.item;
-                            activityId = activity.attr('id');
-                            srcContainerPos = ui.sender.attr('id').slice(0, -1);
-                            activitySrcPos = agendaModel.getActivityPosById(activityId);
-                            destContainer = ui.item.closest('.dailyActivitiesContainer');
-                            destContainerPos = destContainer.attr('id').slice(0, -1);
-                            activityDestPos = destContainer.find('.activityContainer').index(activity);
-                            
-                            agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
-                        } 
-                    }
-            }); 
-    }
      
     
      this.update = function() {
-		//updateStartTimeEvents();
-	 
+        var parkedActivitiesContainer = $('#parkedActivitiesContainer');
+        var activitiesContainer = parkedActivitiesContainer.find(".dailyActivitiesContainer");
+        parkedActivitiesContainer.html("");
+                 
+        var parkedActivites = agendaModel.getParkedActivites();
+        for(var i = 0; i < parkedActivites.length; i++) {
+            agendaView.createParkedActivityContainer(parkedActivitiesContainer, parkedActivites[i].getType(), parkedActivites[i].getLength(), parkedActivites[i].getName(), parkedActivites[i].getId());
+        }
+         
         var days = agendaModel.getDays();
         $('#daysContainer').html("");
         for( var i=0; i<days.length; i++){
@@ -58,6 +74,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
                 activityContainer = agendaView.createActivityContainer(dayContainer.find(".dailyActivitiesContainer"), activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName(), activities[j].getId());
             } 
         }
+         
         layoutContainer();
     }
 

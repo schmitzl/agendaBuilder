@@ -41,6 +41,7 @@ function AgendaModel(){
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity,position){
 		this.addActivity(activity,null,position);
+        this.notifyObservers();
 	};
 	
 	// remove an activity on provided position from parked activites 
@@ -58,6 +59,11 @@ function AgendaModel(){
                     return j;
             }
         
+        }
+        
+        for(var i = 0; i < this.parkedActivities.length; i++) {
+            if(this.parkedActivities[i].getId() == id)
+                return i;
         }
         
         return null;
@@ -89,6 +95,10 @@ function AgendaModel(){
 	this.getDays = function() {
 		return this.days;
 	};
+    
+    this.getParkedActivites = function() {
+        return this.parkedActivities;
+    };
 
 	
 	//*** OBSERVER PATTERN *** 
