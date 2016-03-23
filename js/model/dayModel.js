@@ -1,14 +1,14 @@
 // This is a day consturctor. You can use it to create days, 
 // but there is also a specific function in the Model that adds
 // days to the model, so you don't need call this yourself.
-function Day(startH,startM) {
+function Day(startH,startM,agendaModel) {
 	this._start = startH * 60 + startM;
 	this._activities = [];
 
 	// sets the start time to new value
 	this.setStart = function(startH,startM) {
 		this._start = startH * 60 + startM;
-		model.notifyObservers();
+		agendaModel.notifyObservers();
 	}
 
 	// returns the total length of the acitivities in 

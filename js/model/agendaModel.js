@@ -8,14 +8,19 @@ function AgendaModel(){
 	this.addDay = function (startH,startM) {
 		var day;
 		if(startH){
-			day = new Day(startH,startM);
+			day = new Day(startH,startM,this);
 		} else {
-			day = new Day(8,0);
+			day = new Day(8,0,this);
 		}
 		this.days.push(day);
 		this.notifyObservers();
 		return day;
 
+	};
+	
+	this.removeDay = function (dayIndex) {
+		this.days.splice(dayIndex,1);
+		this.notifyObservers();
 	};
 	
 	// add an activity to model

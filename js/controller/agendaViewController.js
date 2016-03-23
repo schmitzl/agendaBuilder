@@ -42,13 +42,21 @@ var AgendaViewController = function (agendaView, agendaModel) {
 
 	
     updateStartTimeEvents = function(){
-		console.log("updateStartTimeEvents");
 		var days = agendaModel.getDays();
-		for( var i=0; i<days.length; i++){
-			$('#startTimeInput'+i).change(function(){
-				console.log(i);
-				var timeInput = $('#startTimeInput').val().split(":");
-				days[i].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
+		for( i=0; i<days.length; i++){
+			$('#removeIndex'+String(i)).click(function(){
+				agendaModel.removeDay( parseInt($(this).attr("id").split("Index")[1]) );
+			});		
+		
+			$('#startTimeInput'+String(i)).change(function(){
+				var timeInput = $('#startTimeInput'+ parseInt($(this).attr("id").split("Input")[1]) ).val().split(":");
+				days[ parseInt($(this).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
+			});
+			
+			$('#startTimeInput'+String(i)).submit(function(){
+				var timeInput = $('#startTimeInput'+ parseInt($(this).attr("id").split("Input")[1]) ).val().split(":");
+				days[ parseInt($(this).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
+				return(false);
 			});
 				
 		}
@@ -78,6 +86,8 @@ var AgendaViewController = function (agendaView, agendaModel) {
                 activityContainer = agendaView.createActivityContainer(dayContainer.find(".dailyActivitiesContainer"), activities[j].getType(), days[i].getActivityStartTime(j), activities[j].getName(), activities[j].getId());
             } 
         }
+		
+		updateStartTimeEvents();
          
         layoutContainer();
     }
