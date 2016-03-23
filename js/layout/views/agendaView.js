@@ -4,6 +4,10 @@ var AgendaView = function () {
         
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
 
+		var deleteDayBtn = $("<button></button>").addClass("btn btn-default").attr("type","button").attr("id","removeIndex"+dayIndex);
+		var deleteIcon = $("<span></span>").addClass("glyphicon glyphicon-remove").attr("aria-hidden","true");
+		deleteDayBtn.append(deleteIcon);
+		
         var startTimeContainer = $("<form></form>").attr("role","form");
         startTimeContainer.on( "submit", function(){
             return false;
@@ -17,7 +21,7 @@ var AgendaView = function () {
 
         var endTimeContainer = $("<p></p>").text("End time: " + endTime);
         var totalLengthContainer = $("<p></p>").text("Total length: " + totalLength + " min");
-        dayInformationContainer.append(startTimeContainer, endTimeContainer, totalLengthContainer);
+        dayInformationContainer.append(deleteDayBtn,startTimeContainer, endTimeContainer, totalLengthContainer);
         
         var dailyActivitiesContainer = $("<div></div>").addClass("dailyActivitiesContainer");
         var dailyActivitiesTable = $("<table></table>").addClass("dailyActivitiesTable");
