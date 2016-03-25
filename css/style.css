@@ -1,13 +1,14 @@
 #main {
     margin: 0px;
     display: flex; 
+    background-color: white;
 }
 
 .dailyActivitiesContainer {
     min-height: 300px;
     width: 100%;
-    background-color: aquamarine;
-    padding: 50px;
+    background-color: whitesmoke;
+    padding: 10px;
 }
 
 .activityContainer {
@@ -16,14 +17,11 @@
 
 .container {
     margin-right: 20px;
-    padding: 40px;
-    background-color: lightgray;
     width: 400px;
+    padding: 0px;
 }
 
 #activitiesContainer{
-    margin-left: 35px;
-    margin-top: 15px;
     position: fixed;
     width: 350px;
     background-color: azure;
@@ -31,28 +29,9 @@
 
 #activitiesContainerBackground{
     position: fixed;
-    width: 420px;
-    min-height: 600px;
+    min-height: 100%;
+    width: 350px;
     background-color: white;
-    padding-top: 50px;
-}
-
-#daysContainer {
-   
-}
-
-.dayContainer {
-    background-color: lightgray;
-}
-
-.dailyActivitiesTable {
-    margin-top: 20px;
-    width: 320px;
-    background-color: white;
-}
-
-.dailyActivitiesTable td {
-    padding: 10px;
 }
 
 .activityCol {
@@ -75,6 +54,20 @@
     background-color: yellow;
 }
 
+.partContainer {
+    padding: 10px 50px 10px 50px;
+    margin-bottom: 10px;
+}
+
+.dayHeading {
+    background-color: #13abb3;
+    color: white;
+}
+
+.dayTiming {
+    background-color: darkgray;
+}
+
 /* popup style */
 #activityCreationContainer {
     display: inline-block;
@@ -85,10 +78,10 @@
     right: 0;
     width: 500px;
     height: 550px;
-    padding: 50px;
     margin: auto;
     background-color: whitesmoke;
     z-index: 2;
+    padding: 35px;
 }
 
 html,body{ 
@@ -124,5 +117,10 @@ html,body{
 }
 
 
-
+#activitiesHeading {
+    background-color: #123136    ;
+    padding: 10px 50px 10px 50px;
+    text-align: center;
+    color: white;
+}
  

@@ -58,7 +58,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
             }
 
         if (temp1 === 1 && temp2 === 1){
-        agendaModel.addActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ),0);
+        agendaModel.addParkedActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ), null);
                     hideCreationContainer();
         }
         

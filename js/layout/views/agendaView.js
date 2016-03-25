@@ -3,6 +3,8 @@ var AgendaView = function () {
     this.createDayView = function(startTime, endTime, totalLength, dayIndex) {
         
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
+        
+        var dayHeadingContainer = $("<div></div>").addClass("dayHeading").addClass("partContainer");
 
 		var deleteDayBtn = $("<button></button>").addClass("btn btn-default").attr("type","button").attr("id","removeIndex"+dayIndex);
 		var deleteIcon = $("<span></span>").addClass("glyphicon glyphicon-remove").attr("aria-hidden","true");
@@ -17,11 +19,14 @@ var AgendaView = function () {
         var startTimeInput= $("<input></input>").attr("id","startTimeInput"+dayIndex).attr("type","text").attr("value",startTime).addClass("form-control");
         startTimeFormGroupDiv.append(startTimeLabel,startTimeInput);
         startTimeContainer.append(startTimeFormGroupDiv);
+        
+        dayHeadingContainer.append(deleteDayBtn,startTimeContainer);
 
-
+        var dayTimingContainer = $("<div></div>").addClass("dayTiming").addClass("partContainer");
         var endTimeContainer = $("<p></p>").text("End time: " + endTime);
         var totalLengthContainer = $("<p></p>").text("Total length: " + totalLength + " min");
-        dayInformationContainer.append(deleteDayBtn,startTimeContainer, endTimeContainer, totalLengthContainer);
+        dayTimingContainer.append(endTimeContainer, totalLengthContainer);
+        dayInformationContainer.append(dayHeadingContainer, dayTimingContainer);
         
         var dailyActivitiesContainer = $("<div></div>").addClass("dailyActivitiesContainer");
         var dailyActivitiesTable = $("<table></table>").addClass("dailyActivitiesTable");

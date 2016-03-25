@@ -11,14 +11,12 @@ var AgendaViewController = function (agendaView, agendaModel) {
                                 srcContainerPos = null;
                             else
                                 srcContainerPos = ui.sender.attr('id').slice(0, -1);
-                            alert("srcContainerPos " + srcContainerPos);
                             activitySrcPos = agendaModel.getActivityPosById(activityId);
                             destContainer = ui.item.closest('.dailyActivitiesContainer');
                             if(destContainer.attr('id') == "parkedActivitiesContainer")
                                 destContainerPos = null;
                             else
                                 destContainerPos = destContainer.attr('id').slice(0, -1);
-                            alert("destContainerPos " + destContainerPos);
                             activityDestPos = destContainer.find('.activityContainer').index(activity);
                             
                             agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
