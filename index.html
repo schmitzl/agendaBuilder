@@ -38,7 +38,7 @@
             <div id="activitiesHeading"><h3>Your activities</h3></div>
             <div id="activitiesContainer" class="container"> 
                 <div id="parkedActivitiesContainer" class="dailyActivitiesContainer"></div>
-                 <button id="createNewActivityButton" class="btn">Create new activity</button> 
+                 <button id="createNewActivityButton" class="btn btn-block">Create new activity</button> 
             </div>
         </div>
         
@@ -47,7 +47,7 @@
 
             </div>
         </div>
-        <div id="addDayButtonContainer" class="horizontalContainer">+ Add a day</div> 
+        <button id="addDayButton" class="horizontalContainer btn">+ Add a day</button> 
         
         <div id="activityCreationContainer">
             <form role="form">
@@ -56,9 +56,10 @@
                     <input id="activityTitle" type="text" class="form-control"></input>
                 </div>
                 <div class= "errorMessage" id="titleError"></div>
-                <div class="form-group">
+                <div class="input-group spinner">
                     <label for="activityLengthInMin">Length in minutes:</label>
-                    <input id="activityLengthInMin" type="text" class="form-control" default="0"></input>
+                    
+                    <input type="number" class="form-control" id="activityLengthInMin" type="text" class="form-control" value="30" min="10" max="1440"></input>           
                 </div>
                 <div class= "errorMessage" id="lengthError"></div>
                 <div class="form-group">

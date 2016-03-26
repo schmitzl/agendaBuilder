@@ -6,6 +6,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
                     update: function(event, ui) { 
                         if(ui.sender != null) {
                             activity = ui.item;
+                            ui.item.removeClass('helper');
                             activityId = activity.attr('id');
                             if(ui.sender.attr('id') == "parkedActivitiesContainer")
                                 srcContainerPos = null;
@@ -21,7 +22,19 @@ var AgendaViewController = function (agendaView, agendaModel) {
                             
                             agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
                         } 
-                    } 
+                    },
+                    placeholder: {
+                        element: function(currentItem) {
+                            return $("<div></div>").addClass("placeholder");
+                        },
+                        update: function(container, p) {
+                            return;
+                        }
+                    },
+                    start: function(e, ui){
+                        ui.placeholder.height(ui.item.height());
+                        ui.helper.addClass('helper');
+                    }
             }); 
     }
     
@@ -34,7 +47,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
     enableDragAndDrop(parkedActivitiesContainer);
 
 
-    $('#addDayButtonContainer').on('click', function(){
+    $('#addDayButton').on('click', function(){
         agendaModel.addDay();
     });
 

@@ -1,3 +1,5 @@
+@brand-primary: darken(#428bca, 6.5%);
+
 #main {
     margin: 0px;
     display: flex; 
@@ -13,18 +15,23 @@
 
 .activityContainer {
     padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#parkedActivitiesContainer {
+    
 }
 
 .container {
     margin-right: 20px;
-    width: 400px;
+    width: 350px;
     padding: 0px;
 }
 
 #activitiesContainer{
     position: fixed;
     width: 350px;
-    background-color: azure;
 }
 
 #activitiesContainerBackground{
@@ -32,10 +39,24 @@
     min-height: 100%;
     width: 350px;
     background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.activityCol {
-    width: 240px;
+.placeholder {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    -webkit-box-shadow: inset 0px 0px 4px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 4px -2px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 4px -2px rgba(0,0,0,0.75);
+}
+
+.helper {
+    -ms-transform: rotate(-7deg); /* IE 9 */
+    -webkit-transform: rotate(-7deg); /* Chrome, Safari, Opera */
+    transform: rotate(-7deg); 
 }
 
 .presentationContainer {
@@ -66,6 +87,19 @@
 
 .dayTiming {
     background-color: darkgray;
+}
+
+.btn {
+    background-color: #123136;
+    color: white;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #3b565b ;
 }
 
 /* popup style */
@@ -102,13 +136,18 @@ html,body{
     z-index: 1;
 }
 
-#addDayButtonContainer{
+#addDayButton{
     width:150px; 
     position: fixed;
     bottom: 0;
     right: 0;
     margin-bottom: 70px;
     margin-right: 50px;
+    background-color: #13abb3;
+}
+
+#addDayButton:hover {
+    background-color: #117b81 ;
 }
 
 #allDaysContainer{
@@ -118,9 +157,10 @@ html,body{
 
 
 #activitiesHeading {
-    background-color: #123136    ;
+    background-color: #123136;
     padding: 10px 50px 10px 50px;
     text-align: center;
     color: white;
 }
+
  

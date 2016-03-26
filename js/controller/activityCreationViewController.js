@@ -23,9 +23,8 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
     $('#fullSize').on('click', function(){
         hideCreationContainer();
     });
-	
-	// Adding new activity to model
-    $('#submitNewActivityButton').on('click', function(){
+    
+    submitNewActivity = function() {        
         var temp1=0;
         var temp2=0;
        
@@ -60,11 +59,15 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
         if (temp1 === 1 && temp2 === 1){
         agendaModel.addParkedActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ), null);
                     hideCreationContainer();
+        }};
+	
+	// Adding new activity to model
+    $('#submitNewActivityButton').on('click', function(){submitNewActivity()});
+    
+    $(document).keypress(function(e) {
+        if(e.which == 13 && $('#activityCreationContainer').is(":visible")) {
+            submitNewActivity();
         }
-        
-        
-        
-        
     });
     
 	$('#cancelNewActivityButton').on('click', function(){

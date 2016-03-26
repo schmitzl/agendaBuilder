@@ -6,7 +6,7 @@ var AgendaView = function () {
         
         var dayHeadingContainer = $("<div></div>").addClass("dayHeading").addClass("partContainer");
 
-		var deleteDayBtn = $("<button></button>").addClass("btn btn-default").attr("type","button").attr("id","removeIndex"+dayIndex);
+		var deleteDayBtn = $("<span></span>").addClass("deleteDayBtn").attr("id","removeIndex"+dayIndex);
 		var deleteIcon = $("<span></span>").addClass("glyphicon glyphicon-remove").attr("aria-hidden","true");
 		deleteDayBtn.append(deleteIcon);
 		
