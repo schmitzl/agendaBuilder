@@ -34,6 +34,9 @@ var AgendaViewController = function (agendaView, agendaModel) {
                     start: function(e, ui){
                         ui.placeholder.height(ui.item.height());
                         ui.helper.addClass('helper');
+                    },
+                    stop: function(e, ui){
+                        ui.item.removeClass('helper');
                     }
             }); 
     }

@@ -6,6 +6,8 @@ var ActivityCreationView = function () {
         $('#activityType').val(0);
         $('#activityDescription').val("");
         $('.errorMessage').html("");
+        $('#groupActivityTitle').removeClass('has-error');
+        $('#groupLengthError').removeClass('has-error');
     }
     
 }
