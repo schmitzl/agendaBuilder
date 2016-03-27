@@ -3,26 +3,25 @@ var AgendaViewController = function (agendaView, agendaModel) {
     enableDragAndDrop = function(container) {
         container.sortable({
                     connectWith: '.dailyActivitiesContainer',
-                    update: function(event, ui) { 
-                        if(ui.sender != null) {
-                            activity = ui.item;
-                            ui.item.removeClass('helper');
-                            activityId = activity.attr('id');
-                            alert(ui.item.attr('id'));
-                            if(ui.sender.attr('id') == "parkedActivitiesContainer")
-                                srcContainerPos = null;
-                            else
-                                srcContainerPos = ui.sender.attr('id').slice(0, -1);
-                            activitySrcPos = agendaModel.getActivityPosById(activityId);
-                            destContainer = ui.item.closest('.dailyActivitiesContainer');
-                            if(destContainer.attr('id') == "parkedActivitiesContainer")
-                                destContainerPos = null;
-                            else
-                                destContainerPos = destContainer.attr('id').slice(0, -1);
-                            activityDestPos = destContainer.find('.activityContainer').index(activity);
-                            
-                            agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
-                        } 
+                    stop: function(event, ui) { 
+                        
+                        activity = ui.item;
+                        ui.item.removeClass('helper');
+                        activityId = activity.attr('id');
+                        if(event.target.id == "parkedActivitiesContainer")
+                            srcContainerPos = null;
+                        else
+                            srcContainerPos = event.target.id.slice(0, -1);
+                        activitySrcPos = agendaModel.getActivityPosById(activityId);
+                        destContainer = ui.item.closest('.dailyActivitiesContainer');
+                        if(destContainer.attr('id') == "parkedActivitiesContainer")
+                            destContainerPos = null;
+                        else
+                            destContainerPos = destContainer.attr('id').slice(0, -1);
+                        activityDestPos = destContainer.find('.activityContainer').index(activity);
+
+                        agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
+                        
                     },
                     placeholder: {
                         element: function(currentItem) {
@@ -36,9 +35,6 @@ var AgendaViewController = function (agendaView, agendaModel) {
                         ui.placeholder.height(ui.item.height());
                         ui.helper.addClass('helper');
                     },
-                    stop: function(e, ui){
-                        ui.item.removeClass('helper');
-                    }
             }); 
     }
     
