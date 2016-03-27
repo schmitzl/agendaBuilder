@@ -8,6 +8,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
                             activity = ui.item;
                             ui.item.removeClass('helper');
                             activityId = activity.attr('id');
+                            alert(ui.item.attr('id'));
                             if(ui.sender.attr('id') == "parkedActivitiesContainer")
                                 srcContainerPos = null;
                             else
@@ -45,7 +46,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
     
     var parkedActivitiesContainer = $('#parkedActivitiesContainer');
     var activitiesContainer = parkedActivitiesContainer.find(".dailyActivitiesContainer");
-    activitiesContainer.attr('id', '-1a');
+   // activitiesContainer.attr('id', '-1a');
     parkedActivitiesContainer.html("");
     enableDragAndDrop(parkedActivitiesContainer);
 
