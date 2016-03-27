@@ -57,22 +57,30 @@ function AgendaModel(){
 	};
     
     this.getActivityPosById = function(id) {
+        //alert("here");
         for(var i = 0; i < this.days.length; i++) {
             activities = this.days[i].getActivities();
             for(var j = 0; j < activities.length; j++) {
-                if(activities[j].getId() == id) 
+                if(activities[j].getId() == id)  {
+                   // alert("id: " + id + " getId " + this.parkedActivities[i].getId());
                     return j;
+                }
             }
-        
         }
+        
+        //alert("length: " + this.parkedActivities.length);
         
         for(var i = 0; i < this.parkedActivities.length; i++) {
-            if(this.parkedActivities[i].getId() == id)
+            if(this.parkedActivities[i].getId() == id) {
+               // alert("id: " + id + " getId " + this.parkedActivities[i].getId());
                 return i;
+            }
         }
         
+        //alert("length");
+        
         return null;
-    }
+    };
     
 	// moves activity between the days, or day and parked activities.
 	// to park activity you need to set the new day to null

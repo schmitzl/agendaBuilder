@@ -6,9 +6,15 @@ var AgendaView = function () {
         
         var dayHeadingContainer = $("<div></div>").addClass("dayHeading").addClass("partContainer");
 
+        var headingContainer = $("<div></div>").addClass("headingContainer");
+        var heading = $("<span></span>").addClass("dayHead").html("Day " + (dayIndex+1));
+        
 		var deleteDayBtn = $("<span></span>").addClass("deleteDayBtn").attr("id","removeIndex"+dayIndex);
 		var deleteIcon = $("<span></span>").addClass("glyphicon glyphicon-remove").attr("aria-hidden","true");
+        
 		deleteDayBtn.append(deleteIcon);
+        
+        headingContainer.append(heading, deleteDayBtn);
 		
         var startTimeContainer = $("<form></form>").attr("role","form");
         startTimeContainer.on( "submit", function(){
@@ -20,11 +26,11 @@ var AgendaView = function () {
         startTimeFormGroupDiv.append(startTimeLabel,startTimeInput);
         startTimeContainer.append(startTimeFormGroupDiv);
         
-        dayHeadingContainer.append(deleteDayBtn,startTimeContainer);
+        dayHeadingContainer.append(headingContainer,startTimeContainer);
 
         var dayTimingContainer = $("<div></div>").addClass("dayTiming").addClass("partContainer");
-        var endTimeContainer = $("<p></p>").text("End time: " + endTime);
-        var totalLengthContainer = $("<p></p>").text("Total length: " + totalLength + " min");
+        var endTimeContainer = $("<p></p>").html("End time: <span class='bold'>" + endTime + "</span>");
+        var totalLengthContainer = $("<p></p>").html("Total length: <span class='bold'>" + totalLength + " min </span>");
         dayTimingContainer.append(endTimeContainer, totalLengthContainer);
         dayInformationContainer.append(dayHeadingContainer, dayTimingContainer);
         
@@ -59,9 +65,9 @@ var AgendaView = function () {
                 break;
         }
         
-        var timeElem = $("<span></span>").html(length + " ");
-        var headingElem = $("<span></span>").html(heading);
-        var activityContainer = $("<div></div>").addClass("activityContainer").addClass(activityContainerClass);  
+        var timeElem = $("<div></div>").addClass(activityContainerClass).addClass("inline").addClass("activityTimeLabel").html(length + " min ");
+        var headingElem = $("<div></div>").addClass("activityHeading").addClass("inline").html(" " + heading);
+        var activityContainer = $("<div></div>").addClass("activityContainer");  
         activityContainer.attr('id', id);
         activityContainer.append(timeElem, headingElem);
         container.append(activityContainer); 
@@ -88,9 +94,9 @@ var AgendaView = function () {
                 break;
         }
         
-        var timeElem = $("<span></span>").html(time + " ");
-        var headingElem = $("<span></span>").html(heading);
-        var activityContainer = $("<div></div>").addClass("activityContainer").addClass(activityContainerClass);  
+        var timeElem = $("<div></div>").addClass(activityContainerClass).addClass("inline").addClass("activityTimeLabel").html(time + " ");
+        var headingElem = $("<div></div>").addClass("activityHeading").addClass("inline").html(heading);
+        var activityContainer = $("<div></div>").addClass("activityContainer");  
         activityContainer.attr('id', id);
         activityContainer.append(timeElem, headingElem);
         container.append(activityContainer); 

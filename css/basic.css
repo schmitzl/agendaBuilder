@@ -90,7 +90,7 @@ a {
 }
 
 .bold {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 <!-- Can be used to put one IMG (absoluteCentered) on top of another one. Parent-DIV has to be set to absoluteCenteredParent. -->
@@ -114,4 +114,8 @@ a {
 }
 .form-group {
     margin-bottom: 10px;
+}
+
+.inline {
+    display: inline;
 }
