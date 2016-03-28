@@ -12,26 +12,15 @@ var AgendaViewController = function (agendaView, agendaModel) {
                             srcContainerPos = null;
                         else
                             srcContainerPos = event.target.id.slice(0, -1);
-
                         activitySrcPos = agendaModel.getActivityPosById(activityId);
                         destContainer = ui.item.closest('.dailyActivitiesContainer');
                         if(destContainer.attr('id') == "parkedActivitiesContainer")
                             destContainerPos = null;
                         else
                             destContainerPos = destContainer.attr('id').slice(0, -1);
-
                         activityDestPos = destContainer.find('.activityContainer').index(activity);
-                        var dropDay = agendaModel.getDays()[destContainerPos];
-                        var activityDrop = agendaModel.getActivityById(activityId);
 
-                        
-                        if(dropDay.getEndMinutes() + activityDrop.getLength() <= 1440){
-                            agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
-                        }
-                        else{
-                            container.sortable('cancel');
-                            alert("The activity is too long for this day.");
-                        }
+                        agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
                         
                     },
                     placeholder: {
@@ -63,32 +52,6 @@ var AgendaViewController = function (agendaView, agendaModel) {
     });
 
 	
-	onChangeStartTime = function(caller, days) {
-		var timeInput = $('#startTimeInput'+ parseInt($(caller).attr("id").split("Input")[1]) ).val();
-		
-		if (timeInput.indexOf(":") != -1) {
-			var timeInputSplit = timeInput.split(":");
-			
-			
-			if( $.isNumeric(timeInputSplit[0]) && Math.floor(timeInputSplit[0]) == timeInputSplit[0] && $.isNumeric(timeInputSplit[1]) && Math.floor(timeInputSplit[1]) == timeInputSplit[1]){
-				var hourInput = parseInt(timeInputSplit[0]);
-				var minuteInput = parseInt(timeInputSplit[1]);
-				
-				if( hourInput >= 0 && hourInput < 24 && minuteInput >= 0 && minuteInput < 60 ) {
-					days[ parseInt($(caller).attr("id").split("Input")[1]) ].setStart( hourInput, minuteInput );
-				} else {
-					startTimeCorrect = false;
-					alert("Please enter a time between 00:00 and 23:59");
-				}
-			} else {
-				alert("Please enter start time with numbers");
-			}
-		} else {
-			alert("Enter the start time in the format HH:MM");
-		}
-	}
-	
-	
     updateStartTimeEvents = function(){
 		var days = agendaModel.getDays();
 		for( i=0; i<days.length; i++){
@@ -97,11 +60,13 @@ var AgendaViewController = function (agendaView, agendaModel) {
 			});		
 		
 			$('#startTimeInput'+String(i)).change(function(){
-				onChangeStartTime(this, days);
+				var timeInput = $('#startTimeInput'+ parseInt($(this).attr("id").split("Input")[1]) ).val().split(":");
+				days[ parseInt($(this).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
 			});
 			
 			$('#startTimeInput'+String(i)).submit(function(){
-				onChangeStartTime(this, days);
+				var timeInput = $('#startTimeInput'+ parseInt($(this).attr("id").split("Input")[1]) ).val().split(":");
+				days[ parseInt($(this).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
 				return(false);
 			});
 				
@@ -136,6 +101,18 @@ var AgendaViewController = function (agendaView, agendaModel) {
 		updateStartTimeEvents();
          
         layoutContainer();
+         
+        $('.activityContainer').dblclick(function(){  
+            id = $(this).attr('id');
+            activity = agendaModel.getActivityById(id);
+            if(activity != null){
+                
+                showEditContainer(id, activity.getName(), activity.getLength(), activity.getTypeId(), activity.getDescription() );  
+                
+            }
+                
+                
+        });    
     }
 
          

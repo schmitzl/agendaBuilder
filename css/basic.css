@@ -108,7 +108,7 @@ a {
 }
 
 .errorMessage{
-    color: #d9534f;
+    color: orange;
     font-size: 11pt;
     margin-bottom: 12px;
 }
