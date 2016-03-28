@@ -73,8 +73,8 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
 	
 	// Adding new activity to model
     $('#submitNewActivityButton').on('click', function(){
-        var temp1=0;
-        var temp2=0;
+        var activityLenghtCorrect=false;
+        var titleLeghtCorrect=false;
        
         var str = $('#activityTitle').val();
         var title = str.trim().length;
@@ -84,7 +84,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
                 $('#groupActivityTitle').addClass('has-error');
         }
         else{
-            temp1= 1;
+            activityLenghtCorrect= true;
             $('#groupActivityTitle').removeClass('has-error');
         }
         var activityLenght = parseInt($('#activityLengthInMin').val());
@@ -100,7 +100,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
                 $('#groupLengthError').addClass('has-error');
             }
             else{
-                temp2 = 1;
+                titleLeghtCorrect = true;
                 $('#groupLengthError').removeClass('has-error');
             }
 
@@ -111,7 +111,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
             $('#groupLengthError').addClass('has-error');
         }
 
-        if (temp1 === 1 && temp2 === 1){
+        if (activityLenghtCorrect === true && titleLeghtCorrect === true){
         agendaModel.addParkedActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ), null);
                     hideCreationContainer();
         }
