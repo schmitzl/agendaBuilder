@@ -55,7 +55,6 @@ var AgendaViewController = function (agendaView, agendaModel) {
     
     var parkedActivitiesContainer = $('#parkedActivitiesContainer');
     var activitiesContainer = parkedActivitiesContainer.find(".dailyActivitiesContainer");
-   // activitiesContainer.attr('id', '-1a');
     parkedActivitiesContainer.html("");
     enableDragAndDrop(parkedActivitiesContainer);
 

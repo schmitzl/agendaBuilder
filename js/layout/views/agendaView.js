@@ -117,7 +117,7 @@ var AgendaView = function () {
 		var filledUpLevel = 0;
 		for(j=0; j<typeLengths.length; j++) {
 			if(typeLengths[j]>0) {
-				var typeRatio = (typeLengths[j]/totalLength);s
+				var typeRatio = (typeLengths[j]/totalLength);
 				$("#dayTimingScale"+dayIndex).append($("<div></div>").addClass("dayTimingScaleActivityType"+j).attr("style","height:"+(typeRatio*50)+"px; top:"+(filledUpLevel*50)+"px"));
 				filledUpLevel += typeRatio;
 			}
