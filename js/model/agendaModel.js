@@ -81,7 +81,6 @@ function AgendaModel(){
         
         return null;
     };
-    
     this.getActivityById = function(id) {
         //alert("here");
         for(var i = 0; i < this.days.length; i++) {
