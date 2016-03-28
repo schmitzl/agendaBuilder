@@ -107,11 +107,11 @@
 }
 
 .groupWorkContainer {
-    background-color: darksalmon;
+    background-color: indianred;
 }
 
 .discussionContainer {
-    background-color: orangered;
+    background-color: palegreen;
 }
 
 .breakContainer {
@@ -154,25 +154,25 @@
 }
 
 .dayTimingScaleActivityType0 {
-	background-color: red;
+	background-color: deepskyblue;
 	width: 100%;
 	position: absolute;
 }
 
 .dayTimingScaleActivityType1 {
-	background-color: green;
+	background-color: indianred;
 	width: 100%;
 	position: absolute;
 }
 
 .dayTimingScaleActivityType2 {
-	background-color: yellow;
+	background-color: palegreen;
 	width: 100%;
 	position: absolute;
 }
 
 .dayTimingScaleActivityType3 {
-	background-color: blue;
+	background-color: yellow;
 	width: 100%;
 	position: absolute;
 }
