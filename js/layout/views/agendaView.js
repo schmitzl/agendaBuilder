@@ -7,7 +7,9 @@ var AgendaView = function () {
         var dayHeadingContainer = $("<div></div>").addClass("dayHeading").addClass("partContainer");
 
         var headingContainer = $("<div></div>").addClass("headingContainer");
-        var heading = $("<span></span>").addClass("dayHead").html("Day " + (dayIndex+1));
+		var currentDate = new Date(new Date().getTime() + (24 * 60 * 60 * 1000) * dayIndex );
+		var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var heading = $("<span></span>").addClass("dayHead").html( monthNames[currentDate.getMonth()]+" "+currentDate.getDate() );
         
 		var deleteDayBtn = $("<span></span>").addClass("deleteDayBtn").attr("id","removeIndex"+dayIndex);
 		var deleteIcon = $("<span></span>").addClass("glyphicon glyphicon-remove").attr("aria-hidden","true");
