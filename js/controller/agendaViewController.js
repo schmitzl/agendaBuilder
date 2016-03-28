@@ -130,7 +130,11 @@ var AgendaViewController = function (agendaView, agendaModel) {
         var days = agendaModel.getDays();
         $('#daysContainer').html("");
         for( var i=0; i<days.length; i++){
-            var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
+			var typeLengths = new Array();
+			for(j=0; j<4; j++) {
+				typeLengths.push(days[i].getLengthByType(j));
+			}
+            var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), typeLengths, i );
             var dailyActivitesContainer = dayContainer.find(".dailyActivitiesContainer");
             dailyActivitesContainer.attr('id', i + 'a');
             enableDragAndDrop(dailyActivitesContainer);
@@ -142,6 +146,14 @@ var AgendaViewController = function (agendaView, agendaModel) {
         }
 		
 		updateStartTimeEvents();
+		
+        for( var i=0; i<days.length; i++){
+			var typeLengths = new Array();
+			for(j=0; j<4; j++) {
+				typeLengths.push(days[i].getLengthByType(j));
+			}
+			agendaView.updateDayTimeScale(i, days[i].getTotalLength(), typeLengths);
+		}
          
         layoutContainer();
          

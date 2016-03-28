@@ -1,6 +1,6 @@
 var AgendaView = function () {
     
-    this.createDayView = function(startTime, endTime, totalLength, dayIndex) {
+    this.createDayView = function(startTime, endTime, totalLength, typeLengths, dayIndex) {
         
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
         
@@ -31,9 +31,16 @@ var AgendaView = function () {
         dayHeadingContainer.append(headingContainer,startTimeContainer);
 
         var dayTimingContainer = $("<div></div>").addClass("dayTiming").addClass("partContainer");
+		
+		var dayTimingInfoContainer = $("<div></div>").addClass("dayTimingInfo");
         var endTimeContainer = $("<p></p>").html("End time: <span class='bold'>" + endTime + "</span>");
         var totalLengthContainer = $("<p></p>").html("Total length: <span class='bold'>" + totalLength + " min </span>");
-        dayTimingContainer.append(endTimeContainer, totalLengthContainer);
+        dayTimingInfoContainer.append(endTimeContainer, totalLengthContainer);
+		
+		var dayTimingScaleContainer = $("<div></div>").addClass("dayTimingScale").attr("id","dayTimingScale"+dayIndex);
+		var dayTimingScaleBreakLine = $("<div></div>").addClass("dayTimingScaleBreakLine");
+		dayTimingScaleContainer.append(dayTimingScaleBreakLine);
+		dayTimingContainer.append(dayTimingInfoContainer, dayTimingScaleContainer);
         dayInformationContainer.append(dayHeadingContainer, dayTimingContainer);
         
         var dailyActivitiesContainer = $("<div></div>").addClass("dailyActivitiesContainer");
@@ -103,6 +110,22 @@ var AgendaView = function () {
         activityContainer.append(timeElem, headingElem);
         container.append(activityContainer); 
         return activityContainer;
+    }
+	
+    this.updateDayTimeScale = function(dayIndex, totalLength, typeLengths) {
+		$("#dayTimingScale"+dayIndex).html("");
+		var filledUpLevel = 0;
+		console.log(typeLengths);
+		for(j=0; j<typeLengths.length; j++) {
+			if(typeLengths[j]>0) {
+				var typeRatio = (typeLengths[j]/totalLength);
+				console.log($("#dayTimingScale"+dayIndex));
+				$("#dayTimingScale"+dayIndex).append($("<div></div>").addClass("dayTimingScaleActivityType"+j).attr("style","height:"+(typeRatio*50)+"px; top:"+(filledUpLevel*50)+"px"));
+				filledUpLevel += typeRatio;
+			}
+		}
+		var dayTimingScaleBreakLine = $("<div></div>").addClass("dayTimingScaleBreakLine");
+		$("#dayTimingScale"+dayIndex).append(dayTimingScaleBreakLine);
     }
 
 }
