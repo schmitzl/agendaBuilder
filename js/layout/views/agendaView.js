@@ -115,11 +115,9 @@ var AgendaView = function () {
     this.updateDayTimeScale = function(dayIndex, totalLength, typeLengths) {
 		$("#dayTimingScale"+dayIndex).html("");
 		var filledUpLevel = 0;
-		console.log(typeLengths);
 		for(j=0; j<typeLengths.length; j++) {
 			if(typeLengths[j]>0) {
-				var typeRatio = (typeLengths[j]/totalLength);
-				console.log($("#dayTimingScale"+dayIndex));
+				var typeRatio = (typeLengths[j]/totalLength);s
 				$("#dayTimingScale"+dayIndex).append($("<div></div>").addClass("dayTimingScaleActivityType"+j).attr("style","height:"+(typeRatio*50)+"px; top:"+(filledUpLevel*50)+"px"));
 				filledUpLevel += typeRatio;
 			}
