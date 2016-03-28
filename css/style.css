@@ -135,53 +135,6 @@
 
 .dayTiming {
     background-color: darkgray;
-	overflow: hidden;
-}
-
-.dayTimingInfo {
-	float: left;
-}
-
-.dayTimingScale {
-	float: right;
-	width:40px;
-	height:50px;
-	padding: 0px;
-	margin: 0px;
-	background-color:#ddd;
-	position:relative;
-}
-
-.dayTimingScaleActivityType0 {
-	background-color: red;
-	width: 100%;
-	position: absolute;
-}
-
-.dayTimingScaleActivityType1 {
-	background-color: green;
-	width: 100%;
-	position: absolute;
-}
-
-.dayTimingScaleActivityType2 {
-	background-color: yellow;
-	width: 100%;
-	position: absolute;
-}
-
-.dayTimingScaleActivityType3 {
-	background-color: blue;
-	width: 100%;
-	position: absolute;
-}
-
-.dayTimingScaleBreakLine {
-	background-color:#000;
-	height:1px;
-	width:100%;
-	position:absolute;
-	top:70%;
 }
 
 .btn {

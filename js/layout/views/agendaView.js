@@ -1,6 +1,6 @@
 var AgendaView = function () {
     
-    this.createDayView = function(startTime, endTime, totalLength, typeLengths, dayIndex) {
+    this.createDayView = function(startTime, endTime, totalLength, dayIndex) {
         
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
         
@@ -31,22 +31,9 @@ var AgendaView = function () {
         dayHeadingContainer.append(headingContainer,startTimeContainer);
 
         var dayTimingContainer = $("<div></div>").addClass("dayTiming").addClass("partContainer");
-		
-		var dayTimingInfoContainer = $("<div></div>").addClass("dayTimingInfo");
         var endTimeContainer = $("<p></p>").html("End time: <span class='bold'>" + endTime + "</span>");
         var totalLengthContainer = $("<p></p>").html("Total length: <span class='bold'>" + totalLength + " min </span>");
-        dayTimingInfoContainer.append(endTimeContainer, totalLengthContainer);
-		
-		var dayTimingScaleContainer = $("<div></div>").addClass("dayTimingScale").attr("id","dayTimingScale"+dayIndex);
-		var dayTimingScaleBreakLine = $("<div></div>").addClass("dayTimingScaleBreakLine");
-		for(i = 0; i < typeLengths.length; i++) {
-			if(typeLengths[j]>0) {
-				$("<div></div>").addClass("dayTimingScaleActivityType"+i).attr("style","height:100px;");
-				dayTimingScaleContainer.append(dayTimingScaleBreakLine);
-			}
-		}
-		dayTimingScaleContainer.append(dayTimingScaleBreakLine);
-		dayTimingContainer.append(dayTimingInfoContainer, dayTimingScaleContainer);
+        dayTimingContainer.append(endTimeContainer, totalLengthContainer);
         dayInformationContainer.append(dayHeadingContainer, dayTimingContainer);
         
         var dailyActivitiesContainer = $("<div></div>").addClass("dailyActivitiesContainer");
