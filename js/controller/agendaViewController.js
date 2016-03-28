@@ -136,6 +136,16 @@ var AgendaViewController = function (agendaView, agendaModel) {
 		updateStartTimeEvents();
          
         layoutContainer();
+         
+       $('.activityContainer').dblclick(function(){  
+            id = $(this).attr('id');
+            activity = agendaModel.getActivityById(id);
+            if(activity != null){
+                
+                showEditContainer(id, activity.getName(), activity.getLength(), activity.getTypeId(), activity.getDescription() );   
+            }
+                       
+        }); 
     }
 
          

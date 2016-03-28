@@ -7,14 +7,24 @@ var idCounter = 0;
 // This is an activity constructor
 // When you want to create a new activity you just call
 // var act = new Activity("some activity",20,1,"Some description);
-function Activity(name,length,typeid,description){
+function Activity(agendaModel, name,length,typeid,description){
 	var _name = name;
 	var _length = length;
 	var _typeid = typeid;
 	var _description = description;
     var _id = idCounter;
+    var _agendaModel = agendaModel;
     idCounter++;
 	
+      this.setValues = function(name, length, typeid, description){
+        _name = name;
+        _length = length; 
+        _typeid = typeid;
+        _description = description;
+        _agendaModel.notifyObservers();
+        
+    }
+    
 	// sets the name of the activity
 	this.setName = function(name) {
 		_name = name;
