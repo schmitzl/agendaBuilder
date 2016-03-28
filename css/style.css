@@ -215,4 +215,6 @@ html,body{
     color: white;
 }
 
- 
+#activityId{
+    display: none;
+}

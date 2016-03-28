@@ -81,8 +81,28 @@ function AgendaModel(){
         
         return null;
     };
+    
+    this.removeActivityById = function(id) {
+       
+        for(var i = 0; i < this.days.length; i++) {
+            activities = this.days[i].getActivities();
+            for(var j = 0; j < activities.length; j++) {
+                if(activities[j].getId() == id)  {
+                    activities.splice(j,1);
+                }
+            }
+        }
+  
+        
+        for(var i = 0; i < this.parkedActivities.length; i++) {
+            if(this.parkedActivities[i].getId() == id) {
+                this.parkedActivities.splice(i,1);
+            }
+        }
+        this.notifyObservers();
+    };
+    
     this.getActivityById = function(id) {
-        //alert("here");
         for(var i = 0; i < this.days.length; i++) {
             activities = this.days[i].getActivities();
             for(var j = 0; j < activities.length; j++) {
