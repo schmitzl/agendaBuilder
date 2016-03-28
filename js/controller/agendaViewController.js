@@ -54,16 +54,27 @@ var AgendaViewController = function (agendaView, agendaModel) {
 	
 	onChangeStartTime = function(caller, days) {
 		var timeInput = $('#startTimeInput'+ parseInt($(caller).attr("id").split("Input")[1]) ).val();
-		if (timeInput.indexOf(":") == -1) {
-			alert("Enter the start time in the format HH:MM");
-		} else {
+		
+		if (timeInput.indexOf(":") != -1) {
 			var timeInputSplit = timeInput.split(":");
 			
 			
+			if( $.isNumeric(timeInputSplit[0]) && Math.floor(timeInputSplit[0]) == timeInputSplit[0] && $.isNumeric(timeInputSplit[1]) && Math.floor(timeInputSplit[1]) == timeInputSplit[1]){
+				var hourInput = parseInt(timeInputSplit[0]);
+				var minuteInput = parseInt(timeInputSplit[1]);
+				
+				if( hourInput >= 0 && hourInput < 24 && minuteInput >= 0 && minuteInput < 60 ) {
+					days[ parseInt($(caller).attr("id").split("Input")[1]) ].setStart( hourInput, minuteInput );
+				} else {
+					startTimeCorrect = false;
+					alert("Please enter a time between 00:00 and 23:59");
+				}
+			} else {
+				alert("Please enter start time with numbers");
+			}
+		} else {
+			alert("Enter the start time in the format HH:MM");
 		}
-		
-		var timeInputSplit = timeInput.split(":");
-		days[ parseInt($(caller).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
 	}
 	
 	
