@@ -21,16 +21,17 @@ var AgendaViewController = function (agendaView, agendaModel) {
                             destContainerPos = destContainer.attr('id').slice(0, -1);
 
                         activityDestPos = destContainer.find('.activityContainer').index(activity);
-                        console.log(destContainerPos);
                         var dropDay = agendaModel.getDays()[destContainerPos];
-                        console.log(dropDay);
-                        /*
-                        if(dropDay.getEndMinutes() + activity.getLength() <= 1440){
+                        var activityDrop = agendaModel.getActivityById(activityId);
+
+                        
+                        if(dropDay.getEndMinutes() + activityDrop.getLength() <= 1440){
                             agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
                         }
                         else{
+                            container.sortable('cancel');
                             alert("The activity is too long for this day.");
-                        }*/
+                        }
                         
                     },
                     placeholder: {
