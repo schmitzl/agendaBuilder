@@ -107,19 +107,11 @@ var AgendaViewController = function (agendaView, agendaModel) {
             
 			$('#startTimeInput'+String(i)).submit(function(e){
                 e.preventDefault();
-                //alert("asdf");
-                //onChangeStartTime(this, days); 
-                
+                onChangeStartTime(this, days); 
                 return false; 
 
 			});
-            
-            $(document).keypress(function(e) {
-                if(e.which == 13) {
-                    onChangeStartTime(this, days); 
-                }
-            });
-
+        
            
 		}
 	}
