@@ -52,6 +52,12 @@ var AgendaViewController = function (agendaView, agendaModel) {
     });
 
 	
+	onChangeStartTime = function(caller, days) {
+		var timeInput = $('#startTimeInput'+ parseInt($(caller).attr("id").split("Input")[1]) ).val().split(":");
+		days[ parseInt($(caller).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
+	}
+	
+	
     updateStartTimeEvents = function(){
 		var days = agendaModel.getDays();
 		for( i=0; i<days.length; i++){
@@ -60,13 +66,11 @@ var AgendaViewController = function (agendaView, agendaModel) {
 			});		
 		
 			$('#startTimeInput'+String(i)).change(function(){
-				var timeInput = $('#startTimeInput'+ parseInt($(this).attr("id").split("Input")[1]) ).val().split(":");
-				days[ parseInt($(this).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
+				onChangeStartTime(this, days);
 			});
 			
 			$('#startTimeInput'+String(i)).submit(function(){
-				var timeInput = $('#startTimeInput'+ parseInt($(this).attr("id").split("Input")[1]) ).val().split(":");
-				days[ parseInt($(this).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
+				onChangeStartTime(this, days);
 				return(false);
 			});
 				
