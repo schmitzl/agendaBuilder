@@ -115,9 +115,6 @@ var AgendaViewController = function (agendaView, agendaModel) {
 		}
 	}
     
-   
-     
-    
      this.update = function() {
         var parkedActivitiesContainer = $('#parkedActivitiesContainer');
         var activitiesContainer = parkedActivitiesContainer.find(".dailyActivitiesContainer");

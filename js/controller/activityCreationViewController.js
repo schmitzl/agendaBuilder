@@ -116,7 +116,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
         hideCreationContainer();
     });
     
-       $('#deleteNewActivityButton').on('click', function(){
+    $('#deleteNewActivityButton').on('click', function(){
         hideCreationContainer();
         id = $("#activityId").val();
         agendaModel.removeActivityById(id); 
