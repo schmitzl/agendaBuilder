@@ -73,8 +73,8 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
 	
 	// Adding new activity to model
     $('#submitNewActivityButton').on('click', function(){
-        var activityLenghtCorrect=false;
-        var titleLeghtCorrect=false;
+        var activityLengthCorrect=false;
+        var titleLengthCorrect=false;
        
         var str = $('#activityTitle').val();
         var title = str.trim().length;
@@ -84,23 +84,23 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
                 $('#groupActivityTitle').addClass('has-error');
         }
         else{
-            activityLenghtCorrect= true;
+            activityLengthCorrect= true;
             $('#groupActivityTitle').removeClass('has-error');
         }
-        var activityLenght = parseInt($('#activityLengthInMin').val());
+        var activityLength = parseInt($('#activityLengthInMin').val());
         if(val = $('#activityLengthInMin').val(), $.isNumeric(val) && Math.floor(val) == val){
             $('#groupLengthError').addClass('has-error');
             $('#lengthError').html("");
-            if( activityLenght > 1440){
+            if( activityLength > 1440){
                 $('#lengthError').html("Enter a shorter activity length!");
                 $('#groupLengthError').addClass('has-error');
             } 
-            else if(activityLenght <= 0){
+            else if(activityLength <= 0){
                 $('#lengthError').html("Enter a positive number!");
                 $('#groupLengthError').addClass('has-error');
             }
             else{
-                titleLeghtCorrect = true;
+                titleLengthCorrect = true;
                 $('#groupLengthError').removeClass('has-error');
             }
 
@@ -111,9 +111,9 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
             $('#groupLengthError').addClass('has-error');
         }
 
-        if (activityLenghtCorrect === true && titleLeghtCorrect === true){
-        agendaModel.addParkedActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ), null);
-                    hideCreationContainer();
+        if (activityLengthCorrect === true && titleLengthCorrect === true){
+			agendaModel.addParkedActivity(new Activity( $('#activityTitle').val() , parseInt($('#activityLengthInMin').val()) , $('#activityType').val() , $('#activityDescription').val() ), null);
+			hideCreationContainer();
         }
     });
     
