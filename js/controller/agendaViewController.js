@@ -21,16 +21,18 @@ var AgendaViewController = function (agendaView, agendaModel) {
                             destContainerPos = destContainer.attr('id').slice(0, -1);
 
                         activityDestPos = destContainer.find('.activityContainer').index(activity);
-                        var dropDay = agendaModel.getDays()[destContainerPos];
-                        var activityDrop = agendaModel.getActivityById(activityId);
-
-                        
-                        if(dropDay.getEndMinutes() + activityDrop.getLength() <= 1440){
+                        if(destContainerPos != null) {
+                            var dropDay = agendaModel.getDays()[destContainerPos];
+                            var activityDrop = agendaModel.getActivityById(activityId);
+                            if(dropDay.getEndMinutes() + activityDrop.getLength() <= 1440){
+                                agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
+                            }
+                            else{
+                                container.sortable('cancel');
+                                alert("The activity is too long for this day.");
+                            }
+                        } else {
                             agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
-                        }
-                        else{
-                            container.sortable('cancel');
-                            alert("The activity is too long for this day.");
                         }
                         
                     },
@@ -96,15 +98,21 @@ var AgendaViewController = function (agendaView, agendaModel) {
 				agendaModel.removeDay( parseInt($(this).attr("id").split("Index")[1]) );
 			});		
 		
-			$('#startTimeInput'+String(i)).change(function(){
+			$('#startTimeInput'+String(i)).change(function(e){
 				onChangeStartTime(this, days);
+                e.preventDefault();
+                return false;
 			});
 			
-			$('#startTimeInput'+String(i)).submit(function(){
-				onChangeStartTime(this, days);
-				return(false);
+			$('#startTimeInput'+String(i)).submit(function(e){
+               
+                e.preventDefault();
+                onChangeStartTime(this, days); 
+                return false; 
+
 			});
-				
+
+           
 		}
 	}
      
