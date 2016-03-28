@@ -166,7 +166,7 @@
     height: 550px;
     margin: auto;
     background-color: whitesmoke;
-    z-index: 2;
+    z-index: 99999;
     padding: 35px;
 }
 
@@ -185,7 +185,7 @@ html,body{
     overflow:hidden; /* or overflow:auto; if you want scrollbars */
     background-color: black;
     opacity: 0.6;
-    z-index: 1;
+    z-index: 9999;
 }
 
 #addDayButton{
