@@ -12,15 +12,25 @@ var AgendaViewController = function (agendaView, agendaModel) {
                             srcContainerPos = null;
                         else
                             srcContainerPos = event.target.id.slice(0, -1);
+
                         activitySrcPos = agendaModel.getActivityPosById(activityId);
                         destContainer = ui.item.closest('.dailyActivitiesContainer');
                         if(destContainer.attr('id') == "parkedActivitiesContainer")
                             destContainerPos = null;
                         else
                             destContainerPos = destContainer.attr('id').slice(0, -1);
-                        activityDestPos = destContainer.find('.activityContainer').index(activity);
 
-                        agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
+                        activityDestPos = destContainer.find('.activityContainer').index(activity);
+                        console.log(destContainerPos);
+                        var dropDay = agendaModel.getDays()[destContainerPos];
+                        console.log(dropDay);
+                        /*
+                        if(dropDay.getEndMinutes() + activity.getLength() <= 1440){
+                            agendaModel.moveActivity(srcContainerPos, activitySrcPos, destContainerPos, activityDestPos);
+                        }
+                        else{
+                            alert("The activity is too long for this day.");
+                        }*/
                         
                     },
                     placeholder: {

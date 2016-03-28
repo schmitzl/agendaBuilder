@@ -32,7 +32,7 @@ function Activity(name,length,typeid,description){
 		model.notifyObservers();
 	}
 
-	// get the name of the activity
+	// get the length of the activity
 	this.getLength = function() {
 		return _length;
 	}
