@@ -8,7 +8,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
         $('#activityTitle').focus(); 
     }
     
-     showEditContainer = function(id, title, length, type, description){
+    showEditContainer = function(id, title, length, type, description){
         activityCreationView.setValues(id, title, length, type, description);
        
         $('#activityCreationContainer').show();
@@ -237,7 +237,7 @@ var ActivityCreationViewController = function (activityCreationView, agendaModel
     
        $('#deleteNewActivityButton').on('click', function(){
         hideCreationContainer();
-        id = $("#activityId").text();
+        id = $("#activityId").val();
         agendaModel.removeActivityById(id); 
     });
 }
