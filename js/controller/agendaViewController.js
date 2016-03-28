@@ -136,7 +136,7 @@ var AgendaViewController = function (agendaView, agendaModel) {
 			for(j=0; j<4; j++) {
 				typeLengths.push(days[i].getLengthByType(j));
 			}
-            var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), typeLengths, i );
+            var dayContainer = agendaView.createDayView(days[i].getStart(), days[i].getEnd(), days[i].getTotalLength(), i );
             var dailyActivitesContainer = dayContainer.find(".dailyActivitiesContainer");
             dailyActivitesContainer.attr('id', i + 'a');
             enableDragAndDrop(dailyActivitesContainer);

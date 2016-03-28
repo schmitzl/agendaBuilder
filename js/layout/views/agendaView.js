@@ -1,6 +1,6 @@
 var AgendaView = function () {
     
-    this.createDayView = function(startTime, endTime, totalLength, typeLengths, dayIndex) {
+    this.createDayView = function(startTime, endTime, totalLength, dayIndex) {
         
         var dayInformationContainer = $("<div></div>").addClass("dayInformation");
         
