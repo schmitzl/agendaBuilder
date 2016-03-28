@@ -53,7 +53,16 @@ var AgendaViewController = function (agendaView, agendaModel) {
 
 	
 	onChangeStartTime = function(caller, days) {
-		var timeInput = $('#startTimeInput'+ parseInt($(caller).attr("id").split("Input")[1]) ).val().split(":");
+		var timeInput = $('#startTimeInput'+ parseInt($(caller).attr("id").split("Input")[1]) ).val();
+		if (timeInput.indexOf(":") == -1) {
+			alert("Enter the start time in the format HH:MM");
+		} else {
+			var timeInputSplit = timeInput.split(":");
+			
+			
+		}
+		
+		var timeInputSplit = timeInput.split(":");
 		days[ parseInt($(caller).attr("id").split("Input")[1]) ].setStart( parseInt(timeInput[0]), parseInt(timeInput[1]) );
 	}
 	

@@ -33,6 +33,12 @@ function Day(startH,startM,agendaModel) {
 		}
 	};
 	
+	// returns the minitues to 
+	// the end time of the day
+	this.getEndMinutes = function() {
+		return end = this._start + this.getTotalLength();
+	};
+	
 	// returns the string representation Hours:Minutes of 
 	// the start time of the day
 	this.getStart = function() {
