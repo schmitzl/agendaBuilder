@@ -168,7 +168,5 @@ var AgendaViewController = function (agendaView, agendaModel) {
                        
         }); 
     }
-
-         
-         
+      
 }
