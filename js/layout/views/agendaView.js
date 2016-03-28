@@ -18,7 +18,7 @@ var AgendaView = function () {
         
         headingContainer.append(heading, deleteDayBtn);
 		
-        var startTimeContainer = $("<form></form>").attr("role","form");
+        var startTimeContainer = $("<form onsubmit='return false;'></form>").attr("role","form");
         startTimeContainer.on( "submit", function(){
             return false;
         } );

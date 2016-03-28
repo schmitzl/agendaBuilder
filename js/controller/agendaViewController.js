@@ -104,17 +104,27 @@ var AgendaViewController = function (agendaView, agendaModel) {
                 return false;
 			});
 			
+            
 			$('#startTimeInput'+String(i)).submit(function(e){
-               
                 e.preventDefault();
-                onChangeStartTime(this, days); 
+                //alert("asdf");
+                //onChangeStartTime(this, days); 
+                
                 return false; 
 
 			});
+            
+            $(document).keypress(function(e) {
+                if(e.which == 13) {
+                    onChangeStartTime(this, days); 
+                }
+            });
 
            
 		}
 	}
+    
+   
      
     
      this.update = function() {
